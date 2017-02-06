@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xinlai.zhnx.poverty.dao.MeasureDao">
+	<select id="querypovertyindustrysumqu" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT COUNT(IF(a.A36a!='' and a.A36a!='0.00',TRUE,NULL)) as sskfsl,
+						 ROUND(SUM(a.A36a),2) as sskfje,
+					   COUNT(IF(a.A36b!='' and a.A36b!='0.00',TRUE,NULL)) as dbjsl,
+						 ROUND(SUM(a.A36b),2) as dbjje,
+					   COUNT(IF(a.A36c!='' and a.A36c!='0.00',TRUE,NULL)) as yljsl,
+						 ROUND(SUM(a.A36c),2) as yljje,
+					   COUNT(IF(a.A36f!='' and a.A36f!='0.00',TRUE,NULL)) as stbcjsl,
+						 ROUND(SUM(a.A36f),2) as stbcjje,
+					   COUNT(IF(a.AN7!='' and a.AN7!='0.00',TRUE,NULL)) as scbtsl,
+						 ROUND(SUM(a.AN7),2) as scbtje,
+					   COUNT(IF(a.AN8!='' and a.AN8!='0.00',TRUE,NULL)) as nybxbtsl,
+						 ROUND(SUM(a.AN8),2) as nybxbtje,
+					   COUNT(IF(a.AN9!='' and a.AN9!='0.00',TRUE,NULL)) as zfbtsl,
+						 ROUND(SUM(a.AN9),2) as zfbtje,
+					   COUNT(IF(a.AN10!='' and a.AN10!='0.00',TRUE,NULL)) as gjzxjsl,
+						 ROUND(SUM(a.AN10),2) as gjzxjje,
+					   COUNT(IF(a.AN13!='' and a.AN13!='0.00',TRUE,NULL)) as xnhsl,
+						 ROUND(SUM(a.AN13),2) as xnhje,
+					   COUNT(IF(a.AN14!='' and a.AN14!='0.00',TRUE,NULL)) as dbsl,
+						 ROUND(SUM(a.AN14),2) as dbje,
+					   COUNT(IF(a.AN11!='' and a.AN11!='0.00',TRUE,NULL)) as jrdksl,
+						 ROUND(SUM(a.AN11),2) as jrdkje
+			FROM a04_tab4 a,a01_tab1_01 b 
+			WHERE a.id = b.id;
+	</select>
+	
+	<select id="querypovertyindustrysumshi" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT COUNT(IF(a.A36a!='' and a.A36a!='0.00',TRUE,NULL)) as sskfsl,
+						 ROUND(SUM(a.A36a),2) as sskfje,
+					   COUNT(IF(a.A36b!='' and a.A36b!='0.00',TRUE,NULL)) as dbjsl,
+						 ROUND(SUM(a.A36b),2) as dbjje,
+					   COUNT(IF(a.A36c!='' and a.A36c!='0.00',TRUE,NULL)) as yljsl,
+						 ROUND(SUM(a.A36c),2) as yljje,
+					   COUNT(IF(a.A36f!='' and a.A36f!='0.00',TRUE,NULL)) as stbcjsl,
+						 ROUND(SUM(a.A36f),2) as stbcjje,
+					   COUNT(IF(a.AN7!='' and a.AN7!='0.00',TRUE,NULL)) as scbtsl,
+						 ROUND(SUM(a.AN7),2) as scbtje,
+					   COUNT(IF(a.AN8!='' and a.AN8!='0.00',TRUE,NULL)) as nybxbtsl,
+						 ROUND(SUM(a.AN8),2) as nybxbtje,
+					   COUNT(IF(a.AN9!='' and a.AN9!='0.00',TRUE,NULL)) as zfbtsl,
+						 ROUND(SUM(a.AN9),2) as zfbtje,
+					   COUNT(IF(a.AN10!='' and a.AN10!='0.00',TRUE,NULL)) as gjzxjsl,
+						 ROUND(SUM(a.AN10),2) as gjzxjje,
+					   COUNT(IF(a.AN13!='' and a.AN13!='0.00',TRUE,NULL)) as xnhsl,
+						 ROUND(SUM(a.AN13),2) as xnhje,
+					   COUNT(IF(a.AN14!='' and a.AN14!='0.00',TRUE,NULL)) as dbsl,
+						 ROUND(SUM(a.AN14),2) as dbje,
+					   COUNT(IF(a.AN11!='' and a.AN11!='0.00',TRUE,NULL)) as jrdksl,
+						 ROUND(SUM(a.AN11),2) as jrdkje
+			FROM a04_tab4 a,a01_tab1_01 b 
+			WHERE a.id = b.id AND b.shiCode = #{areaCode};
+	</select>
+	
+	<select id="querypovertyindustrysumxian" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT COUNT(IF(a.A36a!='' and a.A36a!='0.00',TRUE,NULL)) as sskfsl,
+						 ROUND(SUM(a.A36a),2) as sskfje,
+					   COUNT(IF(a.A36b!='' and a.A36b!='0.00',TRUE,NULL)) as dbjsl,
+						 ROUND(SUM(a.A36b),2) as dbjje,
+					   COUNT(IF(a.A36c!='' and a.A36c!='0.00',TRUE,NULL)) as yljsl,
+						 ROUND(SUM(a.A36c),2) as yljje,
+					   COUNT(IF(a.A36f!='' and a.A36f!='0.00',TRUE,NULL)) as stbcjsl,
+						 ROUND(SUM(a.A36f),2) as stbcjje,
+					   COUNT(IF(a.AN7!='' and a.AN7!='0.00',TRUE,NULL)) as scbtsl,
+						 ROUND(SUM(a.AN7),2) as scbtje,
+					   COUNT(IF(a.AN8!='' and a.AN8!='0.00',TRUE,NULL)) as nybxbtsl,
+						 ROUND(SUM(a.AN8),2) as nybxbtje,
+					   COUNT(IF(a.AN9!='' and a.AN9!='0.00',TRUE,NULL)) as zfbtsl,
+						 ROUND(SUM(a.AN9),2) as zfbtje,
+					   COUNT(IF(a.AN10!='' and a.AN10!='0.00',TRUE,NULL)) as gjzxjsl,
+						 ROUND(SUM(a.AN10),2) as gjzxjje,
+					   COUNT(IF(a.AN13!='' and a.AN13!='0.00',TRUE,NULL)) as xnhsl,
+						 ROUND(SUM(a.AN13),2) as xnhje,
+					   COUNT(IF(a.AN14!='' and a.AN14!='0.00',TRUE,NULL)) as dbsl,
+						 ROUND(SUM(a.AN14),2) as dbje,
+					   COUNT(IF(a.AN11!='' and a.AN11!='0.00',TRUE,NULL)) as jrdksl,
+						 ROUND(SUM(a.AN11),2) as jrdkje
+			FROM a04_tab4 a,a01_tab1_01 b 
+			WHERE a.id = b.id AND b.xianCode = #{areaCode};
+	</select>
+
+	<select id="querypovertyindustryqu" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT b.shiCode as areaid,
+				   c.areaname as areaname,
+						 ROUND(SUM(a.A36a),2) as sskfje,
+						 ROUND(SUM(a.A36b),2) as dbjje,
+						 ROUND(SUM(a.A36c),2) as yljje,
+						 ROUND(SUM(a.A36f),2) as stbcjje,
+						 ROUND(SUM(a.AN7),2) as scbtje,
+						 ROUND(SUM(a.AN8),2) as nybxbtje,
+						 ROUND(SUM(a.AN9),2) as zfbtje,
+						 ROUND(SUM(a.AN10),2) as gjzxjje,
+						 ROUND(SUM(a.AN13),2) as xnhje,
+						 ROUND(SUM(a.AN14),2) as dbje,
+						 ROUND(SUM(a.AN11),2) as jrdkje
+			FROM a04_tab4 a,a01_tab1_01 b,common_area c 
+			WHERE a.id = b.id 
+			AND c.areaid = b.shiCode 
+			GROUP BY b.shiCode;
+	</select>
+	
+	<select id="querypovertyindustryshi" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT b.xianCode as areaid,
+						 c.areaname as areaname,
+						 COUNT(IF(a.A36a!='' and a.A36a!='0.00',TRUE,NULL)) as sskfsl,
+						 ROUND(SUM(a.A36a),2) as sskfje,
+						 ROUND(SUM(a.A36b),2) as dbjje,
+						 ROUND(SUM(a.A36c),2) as yljje,
+						 ROUND(SUM(a.A36f),2) as stbcjje,
+						 ROUND(SUM(a.AN7),2) as scbtje,
+						 ROUND(SUM(a.AN8),2) as nybxbtje,
+						 ROUND(SUM(a.AN9),2) as zfbtje,
+						 ROUND(SUM(a.AN10),2) as gjzxjje,
+						 ROUND(SUM(a.AN13),2) as xnhje,
+						 ROUND(SUM(a.AN14),2) as dbje,
+						 ROUND(SUM(a.AN11),2) as jrdkje
+			FROM a04_tab4 a,a01_tab1_01 b,common_area c 
+			WHERE a.id = b.id 
+			AND c.areaid = b.xianCode 
+			AND b.shiCode = #{areaCode}
+			GROUP BY b.xianCode;
+	</select>
+	
+	<select id="querypovertyindustryxian" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT b.xianCode as areaid,
+						 c.areaname as areaname,
+						 ROUND(SUM(a.A36a),2) as sskfje,
+						 ROUND(SUM(a.A36b),2) as dbjje,
+						 ROUND(SUM(a.A36c),2) as yljje,
+						 ROUND(SUM(a.A36f),2) as stbcjje,
+						 ROUND(SUM(a.AN7),2) as scbtje,
+						 ROUND(SUM(a.AN8),2) as nybxbtje,
+						 ROUND(SUM(a.AN9),2) as zfbtje,
+						 ROUND(SUM(a.AN10),2) as gjzxjje,
+						 ROUND(SUM(a.AN13),2) as xnhje,
+						 ROUND(SUM(a.AN14),2) as dbje,
+						 ROUND(SUM(a.AN11),2) as jrdkje
+			FROM a04_tab4 a,a01_tab1_01 b,common_area c 
+			WHERE a.id = b.id 
+			AND c.areaid = b.xianCode 
+			AND b.xianCode = #{areaCode}
+			GROUP BY b.xianCode;
+	</select>
+	
+	<select id="querypovertyindustrybarqu" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT b.shiCode as areaid,
+				   c.areaname as areaname,
+						 COUNT(IF(a.A36a!='' and a.A36a!='0.00',TRUE,NULL)) as sskfsl,
+					   COUNT(IF(a.A36b!='' and a.A36b!='0.00',TRUE,NULL)) as dbjsl,
+					   COUNT(IF(a.A36c!='' and a.A36c!='0.00',TRUE,NULL)) as yljsl,
+					   COUNT(IF(a.A36f!='' and a.A36f!='0.00',TRUE,NULL)) as stbcjsl,
+					   COUNT(IF(a.AN7!='' and a.AN7!='0.00',TRUE,NULL)) as scbtsl,
+					   COUNT(IF(a.AN8!='' and a.AN8!='0.00',TRUE,NULL)) as nybxbtsl,
+					   COUNT(IF(a.AN9!='' and a.AN9!='0.00',TRUE,NULL)) as zfbtsl,
+					   COUNT(IF(a.AN10!='' and a.AN10!='0.00',TRUE,NULL)) as gjzxjsl,
+					   COUNT(IF(a.AN13!='' and a.AN13!='0.00',TRUE,NULL)) as xnhsl,
+					   COUNT(IF(a.AN14!='' and a.AN14!='0.00',TRUE,NULL)) as dbsl,
+					   COUNT(IF(a.AN11!='' and a.AN11!='0.00',TRUE,NULL)) as jrdksl
+			FROM a04_tab4 a,a01_tab1_01 b,common_area c 
+			WHERE a.id = b.id 
+			AND c.areaid = b.shiCode 
+			GROUP BY b.shiCode;
+	</select>
+	
+	<select id="querypovertyindustrybarshi" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT b.xianCode as areaid,
+						 c.areaname as areaname,
+						 COUNT(IF(a.A36a!='' and a.A36a!='0.00',TRUE,NULL)) as sskfsl,
+					   COUNT(IF(a.A36b!='' and a.A36b!='0.00',TRUE,NULL)) as dbjsl,
+					   COUNT(IF(a.A36c!='' and a.A36c!='0.00',TRUE,NULL)) as yljsl,
+					   COUNT(IF(a.A36f!='' and a.A36f!='0.00',TRUE,NULL)) as stbcjsl,
+					   COUNT(IF(a.AN7!='' and a.AN7!='0.00',TRUE,NULL)) as scbtsl,
+					   COUNT(IF(a.AN8!='' and a.AN8!='0.00',TRUE,NULL)) as nybxbtsl,
+					   COUNT(IF(a.AN9!='' and a.AN9!='0.00',TRUE,NULL)) as zfbtsl,
+					   COUNT(IF(a.AN10!='' and a.AN10!='0.00',TRUE,NULL)) as gjzxjsl,
+					   COUNT(IF(a.AN13!='' and a.AN13!='0.00',TRUE,NULL)) as xnhsl,
+					   COUNT(IF(a.AN14!='' and a.AN14!='0.00',TRUE,NULL)) as dbsl,
+					   COUNT(IF(a.AN11!='' and a.AN11!='0.00',TRUE,NULL)) as jrdksl
+			FROM a04_tab4 a,a01_tab1_01 b,common_area c 
+			WHERE a.id = b.id 
+			AND c.areaid = b.xianCode 
+			AND b.shiCode = #{areaCode}
+			GROUP BY b.xianCode;
+	</select>
+	
+	<select id="querypovertyindustrybarxian" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT b.xiangCode as areaid,
+						 c.areaname as areaname,
+						 COUNT(IF(a.A36a!='' and a.A36a!='0.00',TRUE,NULL)) as sskfsl,
+					   COUNT(IF(a.A36b!='' and a.A36b!='0.00',TRUE,NULL)) as dbjsl,
+					   COUNT(IF(a.A36c!='' and a.A36c!='0.00',TRUE,NULL)) as yljsl,
+					   COUNT(IF(a.A36f!='' and a.A36f!='0.00',TRUE,NULL)) as stbcjsl,
+					   COUNT(IF(a.AN7!='' and a.AN7!='0.00',TRUE,NULL)) as scbtsl,
+					   COUNT(IF(a.AN8!='' and a.AN8!='0.00',TRUE,NULL)) as nybxbtsl,
+					   COUNT(IF(a.AN9!='' and a.AN9!='0.00',TRUE,NULL)) as zfbtsl,
+					   COUNT(IF(a.AN10!='' and a.AN10!='0.00',TRUE,NULL)) as gjzxjsl,
+					   COUNT(IF(a.AN13!='' and a.AN13!='0.00',TRUE,NULL)) as xnhsl,
+					   COUNT(IF(a.AN14!='' and a.AN14!='0.00',TRUE,NULL)) as dbsl,
+					   COUNT(IF(a.AN11!='' and a.AN11!='0.00',TRUE,NULL)) as jrdksl
+			FROM a04_tab4 a,a01_tab1_01 b,common_area c 
+			WHERE a.id = b.id 
+			AND c.areaid = b.xiangCode 
+			AND b.xianCode = #{areaCode}
+			GROUP BY b.xiangCode;
+	</select>
+	
+	<select id="querypovertyindustrybarxiang" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT b.cunCode as areaid,
+						 c.areaname as areaname,
+					   COUNT(IF(a.A36a!='' and a.A36a!='0.00',TRUE,NULL)) as sskfsl,
+					   COUNT(IF(a.A36b!='' and a.A36b!='0.00',TRUE,NULL)) as dbjsl,
+					   COUNT(IF(a.A36c!='' and a.A36c!='0.00',TRUE,NULL)) as yljsl,
+					   COUNT(IF(a.A36f!='' and a.A36f!='0.00',TRUE,NULL)) as stbcjsl,
+					   COUNT(IF(a.AN7!='' and a.AN7!='0.00',TRUE,NULL)) as scbtsl,
+					   COUNT(IF(a.AN8!='' and a.AN8!='0.00',TRUE,NULL)) as nybxbtsl,
+					   COUNT(IF(a.AN9!='' and a.AN9!='0.00',TRUE,NULL)) as zfbtsl,
+					   COUNT(IF(a.AN10!='' and a.AN10!='0.00',TRUE,NULL)) as gjzxjsl,
+					   COUNT(IF(a.AN13!='' and a.AN13!='0.00',TRUE,NULL)) as xnhsl,
+					   COUNT(IF(a.AN14!='' and a.AN14!='0.00',TRUE,NULL)) as dbsl,
+					   COUNT(IF(a.AN11!='' and a.AN11!='0.00',TRUE,NULL)) as jrdksl
+			FROM a04_tab4 a,a01_tab1_01 b,common_area c 
+			WHERE a.id = b.id 
+			AND c.areaid = b.cunCode 
+			AND b.xiangCode = #{areaCode}
+			GROUP BY b.cunCode;
+	</select>
+	
+	<select id="querypovertysocietysumqu" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT COUNT(IF(a.AN43a_2!='',TRUE,NULL)) as bfzjhs,
+						 SUM(a.AN43a_2) as bfzjje,
+						 COUNT(IF(a.AN43a_5!='',TRUE,NULL)) as bfwphs,
+						 SUM(a.AN43a_5) as bfwpje
+			FROM a09_tab9 a,a01_tab1_01 b
+			WHERE a.id = b.id;
+	</select>
+	<select id="querypovertysocietysumshi" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT COUNT(IF(a.AN43a_2!='',TRUE,NULL)) as bfzjhs,
+						 SUM(a.AN43a_2) as bfzjje,
+						 COUNT(IF(a.AN43a_5!='',TRUE,NULL)) as bfwphs,
+						 SUM(a.AN43a_5) as bfwpje
+			FROM a09_tab9 a,a01_tab1_01 b
+			WHERE a.id = b.id AND b.shiCode = #{areaCode};
+	</select>
+	<select id="querypovertysocietysumxian" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT COUNT(IF(a.AN43a_2!='',TRUE,NULL)) as bfzjhs,
+						 SUM(a.AN43a_2) as bfzjje,
+						 COUNT(IF(a.AN43a_5!='',TRUE,NULL)) as bfwphs,
+						 SUM(a.AN43a_5) as bfwpje
+			FROM a09_tab9 a,a01_tab1_01 b
+			WHERE a.id = b.id AND b.xianCode = #{areaCode};
+	</select>
+	<select id="querypovertysocietyqu" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT c.areaid as areaid,
+						 c.areaname as areaname,
+						 COUNT(IF(a.AN43a_2!='',TRUE,NULL)) as bfzjhs,
+						 SUM(a.AN43a_2) as bfzjje,
+						 COUNT(IF(a.AN43a_5!='',TRUE,NULL)) as bfwphs,
+						 SUM(a.AN43a_5) as bfwpje
+			FROM a09_tab9 a,a01_tab1_01 b,common_area c
+			WHERE a.id = b.id AND b.shiCode = c.areaid group by c.areaid;
+	</select>
+	<select id="querypovertysocietyshi" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT c.areaid as areaid,
+						 c.areaname as areaname,
+						 COUNT(IF(a.AN43a_2!='',TRUE,NULL)) as bfzjhs,
+						 SUM(a.AN43a_2) as bfzjje,
+						 COUNT(IF(a.AN43a_5!='',TRUE,NULL)) as bfwphs,
+						 SUM(a.AN43a_5) as bfwpje
+			FROM a09_tab9 a,a01_tab1_01 b,common_area c
+			WHERE a.id = b.id AND b.xianCode = c.areaid AND b.shiCode = #{areaCode}
+			group by c.areaid;
+	</select>
+	<select id="querypovertysocietyxian" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT c.areaid as areaid,
+						 c.areaname as areaname,
+						 COUNT(IF(a.AN43a_2!='',TRUE,NULL)) as bfzjhs,
+						 SUM(a.AN43a_2) as bfzjje,
+						 COUNT(IF(a.AN43a_5!='',TRUE,NULL)) as bfwphs,
+						 SUM(a.AN43a_5) as bfwpje
+			FROM a09_tab9 a,a01_tab1_01 b,common_area c
+			WHERE a.id = b.id AND b.xianCode = c.areaid AND b.xianCode = #{areaCode}
+			group by c.areaid;
+	</select>
+
+	<select id="querypovertysocietybarqu" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT c.areaid as areaid,
+						 c.areaname as areaname,
+						 COUNT(IF(a.AN43a_2!='',TRUE,NULL)) as bfzjhs,
+						 SUM(a.AN43a_2) as bfzjje,
+						 COUNT(IF(a.AN43a_5!='',TRUE,NULL)) as bfwphs,
+						 SUM(a.AN43a_5) as bfwpje
+			FROM a09_tab9 a,a01_tab1_01 b,common_area c
+			WHERE a.id = b.id AND b.shiCode = c.areaid group by c.areaid;
+	</select>
+	<select id="querypovertysocietybarshi" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT c.areaid as areaid,
+						 c.areaname as areaname,
+						 COUNT(IF(a.AN43a_2!='',TRUE,NULL)) as bfzjhs,
+						 SUM(a.AN43a_2) as bfzjje,
+						 COUNT(IF(a.AN43a_5!='',TRUE,NULL)) as bfwphs,
+						 SUM(a.AN43a_5) as bfwpje
+			FROM a09_tab9 a,a01_tab1_01 b,common_area c
+			WHERE a.id = b.id AND b.xianCode = c.areaid AND b.shiCode = #{areaCode}
+			group by c.areaid;
+	</select>
+	<select id="querypovertysocietybarxian" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT c.areaid as areaid,
+						 c.areaname as areaname,
+						 COUNT(IF(a.AN43a_2!='',TRUE,NULL)) as bfzjhs,
+						 SUM(a.AN43a_2) as bfzjje,
+						 COUNT(IF(a.AN43a_5!='',TRUE,NULL)) as bfwphs,
+						 SUM(a.AN43a_5) as bfwpje
+			FROM a09_tab9 a,a01_tab1_01 b,common_area c
+			WHERE a.id = b.id AND b.xiangCode = c.areaid AND b.xianCode = #{areaCode}
+			group by c.areaid;
+	</select>
+	<select id="querypovertysocietybarxiang" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT c.areaid as areaid,
+						 c.areaname as areaname,
+						 COUNT(IF(a.AN43a_2!='',TRUE,NULL)) as bfzjhs,
+						 SUM(a.AN43a_2) as bfzjje,
+						 COUNT(IF(a.AN43a_5!='',TRUE,NULL)) as bfwphs,
+						 SUM(a.AN43a_5) as bfwpje
+			FROM a09_tab9 a,a01_tab1_01 b,common_area c
+			WHERE a.id = b.id AND b.cunCode = c.areaid AND b.xiangCode = #{areaCode}
+			group by c.areaid;
+	</select>
+	<select id="querypovertyhelpsumqu" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT COUNT(DISTINCT(IF(a.respon!='',a.respon,NULL))) as bfrsl,
+						 COUNT(*) as jdlkhs,
+						 COUNT(IF(a.respon!='',TRUE,NULL)) as ybfhs, 
+					   COUNT(IF(a.respon='',TRUE,NULL)) as wbfhs 
+			FROM a01_tab13 a,a01_tab1_01 b 
+			WHERE a.id = b.id;
+	</select>
+	<select id="querypovertyhelpsumshi" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT COUNT(DISTINCT(IF(a.respon!='',a.respon,NULL))) as bfrsl,
+						 COUNT(*) as jdlkhs,
+						 COUNT(IF(a.respon!='',TRUE,NULL)) as ybfhs, 
+					   COUNT(IF(a.respon='',TRUE,NULL)) as wbfhs 
+			FROM a01_tab13 a,a01_tab1_01 b 
+			WHERE a.id = b.id AND b.shiCode = #{areaCode};
+	</select>
+	<select id="querypovertyhelpsumxian" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT COUNT(DISTINCT(IF(a.respon!='',a.respon,NULL))) as bfrsl,
+						 COUNT(*) as jdlkhs,
+						 COUNT(IF(a.respon!='',TRUE,NULL)) as ybfhs, 
+					   COUNT(IF(a.respon='',TRUE,NULL)) as wbfhs 
+			FROM a01_tab13 a,a01_tab1_01 b 
+			WHERE a.id = b.id AND b.xianCode = #{areaCode};
+	</select>
+	<select id="querypovertyhelpqu" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT c.areaid as areaid,
+						 c.areaname as areaname,
+						 COUNT(DISTINCT(IF(a.respon!='',a.respon,NULL))) as bfrsl,
+						 COUNT(*) as jdlkhs,
+						 COUNT(IF(a.respon!='',TRUE,NULL)) as ybfhs, 
+					   COUNT(IF(a.respon='',TRUE,NULL)) as wbfhs 
+			FROM a01_tab13 a,a01_tab1_01 b,common_area c
+			WHERE a.id = b.id AND b.shiCode = c.areaid GROUP BY c.areaid;
+	</select>
+	<select id="querypovertyhelpshi" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT c.areaid as areaid,
+						 c.areaname as areaname,
+						 COUNT(DISTINCT(IF(a.respon!='',a.respon,NULL))) as bfrsl,
+						 COUNT(*) as jdlkhs,
+						 COUNT(IF(a.respon!='',TRUE,NULL)) as ybfhs, 
+					   COUNT(IF(a.respon='',TRUE,NULL)) as wbfhs 
+			FROM a01_tab13 a,a01_tab1_01 b,common_area c
+			WHERE a.id = b.id AND b.xianCode = c.areaid AND b.shiCode = #{areaCode} GROUP BY c.areaid;
+	</select>
+	<select id="querypovertyhelpxian" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT c.areaid as areaid,
+						 c.areaname as areaname,
+						 COUNT(DISTINCT(IF(a.respon!='',a.respon,NULL))) as bfrsl,
+						 COUNT(*) as jdlkhs,
+						 COUNT(IF(a.respon!='',TRUE,NULL)) as ybfhs, 
+					   COUNT(IF(a.respon='',TRUE,NULL)) as wbfhs 
+			FROM a01_tab13 a,a01_tab1_01 b,common_area c
+			WHERE a.id = b.id AND b.xianCode = c.areaid AND b.xianCode = #{areaCode} GROUP BY c.areaid;
+	</select>
+	<select id="querypovertyhelpbarqu" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT c.areaid as areaid,
+						 c.areaname as areaname,
+						 COUNT(DISTINCT(IF(a.respon!='',a.respon,NULL))) as bfrsl,
+						 COUNT(*) as jdlkhs,
+						 COUNT(IF(a.respon!='',TRUE,NULL)) as ybfhs, 
+					   COUNT(IF(a.respon='',TRUE,NULL)) as wbfhs 
+			FROM a01_tab13 a,a01_tab1_01 b,common_area c
+			WHERE a.id = b.id AND b.shiCode = c.areaid GROUP BY c.areaid;
+	</select>
+	<select id="querypovertyhelpbarshi" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT c.areaid as areaid,
+						 c.areaname as areaname,
+						 COUNT(DISTINCT(IF(a.respon!='',a.respon,NULL))) as bfrsl,
+						 COUNT(*) as jdlkhs,
+						 COUNT(IF(a.respon!='',TRUE,NULL)) as ybfhs, 
+					   COUNT(IF(a.respon='',TRUE,NULL)) as wbfhs 
+			FROM a01_tab13 a,a01_tab1_01 b,common_area c
+			WHERE a.id = b.id AND b.xianCode = c.areaid AND b.shiCode = #{areaCode} GROUP BY c.areaid;
+	</select>
+	<select id="querypovertyhelpbarxian" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT c.areaid as areaid,
+						 c.areaname as areaname,
+						 COUNT(DISTINCT(IF(a.respon!='',a.respon,NULL))) as bfrsl,
+						 COUNT(*) as jdlkhs,
+						 COUNT(IF(a.respon!='',TRUE,NULL)) as ybfhs, 
+					   COUNT(IF(a.respon='',TRUE,NULL)) as wbfhs 
+			FROM a01_tab13 a,a01_tab1_01 b,common_area c
+			WHERE a.id = b.id AND b.xiangCode = c.areaid AND b.xianCode = #{areaCode} GROUP BY c.areaid;
+	</select>
+	<select id="querypovertyhelpbarxiang" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT c.areaid as areaid,
+						 c.areaname as areaname,
+						 COUNT(DISTINCT(IF(a.respon!='',a.respon,NULL))) as bfrsl,
+						 COUNT(*) as jdlkhs,
+						 COUNT(IF(a.respon!='',TRUE,NULL)) as ybfhs, 
+					   COUNT(IF(a.respon='',TRUE,NULL)) as wbfhs 
+			FROM a01_tab13 a,a01_tab1_01 b,common_area c
+			WHERE a.id = b.id AND b.cunCode = c.areaid AND b.xiangCode = #{areaCode} GROUP BY c.areaid;
+	</select>
+	<select id="querypovertyspecialsumqu" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT
+				SUM(yljhtr) as yljhtr,
+				SUM(yljhhs) as yljhhs,
+				SUM(fpxexd) as fpxexd,
+				SUM(ydfpbq) as ydfpbq
+			FROM
+				fpcs_zxfp;
+	</select>
+	<select id="querypovertyspecialsumshi" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT
+				SUM(a.yljhtr) as yljhtr,
+				SUM(a.yljhhs) as yljhhs,
+				SUM(a.fpxexd) as fpxexd,
+				SUM(a.ydfpbq) as ydfpbq
+			FROM
+				fpcs_zxfp a,common_area b 
+			WHERE a.areaid = b.areaid AND b.parentid = #{areaCode};
+	</select>
+	<select id="querypovertyspecialbarqu" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT * FROM fpcs_zxfp;
+	</select>
+	<select id="querypovertyspecialbarshi" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT
+				a.*
+			FROM
+				fpcs_zxfp a,
+				common_area b
+			WHERE
+				a.areaid = b.areaid
+			AND b.parentid = #{areaCode};
+	</select>
+	<select id="querypovertyspecialqu" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT
+				SUM(a.yljhtr) as yljhtr,
+				SUM(a.yljhhs) as yljhhs,
+				SUM(a.fpxexd) as fpxexd,
+				SUM(a.ydfpbq) as ydfpbq,
+				b.parentid as areaid
+				
+			FROM
+				fpcs_zxfp a,
+				common_area b
+			WHERE
+				a.areaid = b.areaid GROUP BY b.parentid;
+	</select>
+	<select id="querypovertyspecialshi" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT
+				a.*
+			FROM
+				fpcs_zxfp a,
+				common_area b
+			WHERE
+				a.areaid = b.areaid
+			AND b.parentid = #{areaCode};
+	</select>
+</mapper>

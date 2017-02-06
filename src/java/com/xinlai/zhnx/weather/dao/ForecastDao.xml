@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xinlai.zhnx.weather.dao.ForecastDao">
+
+	<select id="getTrendForecast" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT 
+		  CASE
+		    DAYOFWEEK(a.Date) 
+		    WHEN 1 
+		    THEN '星期日' 
+		    WHEN 2 
+		    THEN '星期一' 
+		    WHEN 3 
+		    THEN '星期二' 
+		    WHEN 4 
+		    THEN '星期三' 
+		    WHEN 5 
+		    THEN '星期四' 
+		    WHEN 6 
+		    THEN '星期五' 
+		    WHEN 7 
+		    THEN '星期六' 
+		  END AS day2week,
+		  DATE_FORMAT(a.Date, '%c月%e日') AS date2day,
+		  a.Weather AS weather,
+		  a.HighestTemperature AS maxTemp,
+		  a.LowestTemperature AS minTemp,
+		  a.WindDirection AS wind,
+		  a.WindSpeed AS windspeed,
+		  a.RelativeHumidity AS RH,
+		  a.barometricPressure AS pressure
+		FROM
+		  weather_weatherforecastofday a 
+		WHERE 1 = 1 
+		 AND a.AreaCode = #{areaCode}
+		ORDER BY a.Date DESC 
+		LIMIT 0,7
+	</select>
+	
+	<select id="getTodayTrendForecast" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			Weather as weather,
+			RelativeHumidity as data,
+			WindDirection as wind,
+			WindSpeedLevel as windPower
+		FROM
+			weather_weatherforecastofhour
+		WHERE
+			1 = 1
+		AND AreaCode = #{areaCode}
+		ORDER BY DateTime ASC
+		LIMIT 0,7
+	</select>
+	
+	<select id="getLifeIndex" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT 
+		  a.AcoldIndex,
+		  d.Acold,
+		  a.AmbulatoryMotorIndex,
+		  b.AmbulatoryMotor,
+		  a.DressingIndex,
+		  c.Dressing,
+		  a.DryingIndex,
+		  e.Drying,
+		  a.GradeofUVIndex,
+		  g.GradeofUV,
+		  a.WashingIndex,
+		  f.Washing 
+		FROM
+		  weather_lifeindex a,
+		  weather_bm_clzs b,
+		  weather_bm_cyzs c,
+		  weather_bm_gmzs d,
+		  weather_bm_lszs e,
+		  weather_bm_xczs f,
+		  weather_bm_zwxzs g 
+		WHERE a.AcoldIndex = d.id 
+		  AND a.AmbulatoryMotorIndex = b.id 
+		  AND a.DressingIndex = c.id 
+		  AND a.DryingIndex = e.id 
+		  AND a.GradeofUVIndex = g.id 
+		  AND a.WashingIndex = f.id 
+<![CDATA[ AND DATE_FORMAT(a.Date, '%Y%m%d') <= DATE_FORMAT(NOW(), '%Y%m%d') ]]> 
+		  AND DATE_FORMAT(a.Date, '%Y%m%d') = 
+		  (SELECT 
+		    MAX(DATE_FORMAT(h.Date, '%Y%m%d')) 
+		  FROM
+		    weather_lifeindex h)
+		  AND a.AreaCode = #{areaCode}
+	</select>
+	
+	<select id="getWarMsgRoll" parameterType="java.lang.String" resultType="java.util.Map">	
+		SELECT
+			IconType AS type,
+			WarningType AS typeName,
+			LEVEL AS level,
+			LevelName AS levelName,
+			IconLevel AS color,
+			WarningLevel AS colorName,
+			Ponderance AS ponderance,
+			PonderanceName AS ponderanceName,
+			ReleaseMechanism AS MB,
+			ReleaseDate AS time,
+			STATUS AS isWarning,
+			Notice AS content,
+			Longitude AS lng,
+			Latitude AS lat
+		FROM
+			weather_weatherwarning;
+	</select>
+	
+	<select id="getMapInfo" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			a.AreaCode as areaCode,
+			a.Weather as weather,
+			c.CurrentHighestTemperature as max,
+			c.CurrentLowestTemperature as min
+		FROM
+			weather_realtimeweather a,
+			common_area b,
+			weather_temperatureoftoday c
+		WHERE
+			a.AreaCode = b.areaid
+		AND
+			a.AreaCode = c.AreaCode
+		AND
+			b.parentid = #{areaCode}
+		AND
+			c.DateTime = (SELECT MAX(DateTime) from weather_temperatureoftoday)
+		AND
+			a.Type = '实时'
+	</select>
+</mapper>

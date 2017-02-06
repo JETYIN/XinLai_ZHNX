@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="alert_frame" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 2030 80" style="enable-background:new 0 0 2030 80;" xml:space="preserve">
+<style type="text/css">
+	.alert_frame_st0{fill:#051E3D;fill-opacity:0.8;}
+	.alert_frame_st1{fill:none;stroke-miterlimit:10;}
+	.alert_frame_st2{fill:none;stroke:#00BEFF;stroke-width:2;stroke-miterlimit:10;}
+	.alert_frame_st3{fill:none;stroke:#00BEFF;stroke-width:3;stroke-miterlimit:10;}
+</style>
+<g id="XMLID_4317_">
+	<polygon id="XMLID_4329_" class="alert_frame_st0" points="7.9,14.2 8,65.2 13.7,70.7 26.9,70.7 28.8,71.8 2001.7,71.6 2004.1,70 2016.1,70 
+		2021.9,64.6 2021.9,16.4 2015.2,9.8 2003.1,9.9 2001.1,8.5 28.2,8.4 25.6,8.9 13.7,8.8 	"/>
+	<g id="XMLID_4318_">
+		<polygon id="XMLID_4328_" class="alert_frame_st1" points="2018.5,75.1 11.5,74.9 3.4,66.8 3.4,13.1 11.5,4.9 18.9,4.9 2018.5,5.1 
+			2026.6,13.2 2026.6,66.8 		"/>
+		<g id="XMLID_4324_">
+			<polyline id="XMLID_4327_" class="alert_frame_st2" points="26.9,5 11.4,5 3.4,13 3.4,19.1 			"/>
+			<polyline id="XMLID_4326_" class="alert_frame_st2" points="26.9,74.9 11.4,74.9 3.4,66.9 3.4,60.8 			"/>
+		</g>
+		<g id="XMLID_4325_">
+			<polyline id="XMLID_4323_" class="alert_frame_st3" points="26.9,74.9 11.4,74.9 3.4,66.9 3.4,60.8 			"/>
+			<polyline id="XMLID_4322_" class="alert_frame_st3" points="26.9,5 11.4,5 3.4,13 3.4,19.1 			"/>
+		</g>
+		<g id="XMLID_4319_">
+			<polyline id="XMLID_4321_" class="alert_frame_st3" points="2003.1,75.1 2018.6,75.1 2026.6,67 2026.6,60.9 			"/>
+			<polyline id="XMLID_4320_" class="alert_frame_st3" points="2003.1,5.1 2018.6,5.1 2026.6,13.1 2026.6,19.2 			"/>
+		</g>
+	</g>
+</g>
+</svg>

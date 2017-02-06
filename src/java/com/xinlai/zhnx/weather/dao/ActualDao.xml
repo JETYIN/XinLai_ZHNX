@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xinlai.zhnx.weather.dao.ActualDao">
+
+	<select id="getActualWeather" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT * FROM weather_realtimeweather WHERE AreaCode = #{areaCode};
+	</select>
+	
+	<select id="getLifeIndex" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			a.AcoldIndex,
+			d.Acold,
+			a.AmbulatoryMotorIndex,
+			b.AmbulatoryMotor,
+			a.DressingIndex,
+			c.Dressing,
+			a.DryingIndex,
+			e.Drying,
+			a.GradeofUVIndex,
+			g.GradeofUV,
+			a.WashingIndex,
+			f.Washing
+		FROM
+			weather_lifeindex a,
+			weather_bm_clzs b,
+			weather_bm_cyzs c,
+			weather_bm_gmzs d,
+			weather_bm_lszs e,
+			weather_bm_xczs f,
+			weather_bm_zwxzs g
+		WHERE a.AcoldIndex = d.id
+			AND a.AmbulatoryMotorIndex = b.id
+			AND a.DressingIndex = c.id
+			AND a.DryingIndex = e.id
+			AND a.GradeofUVIndex = g.id
+			AND a.WashingIndex = f.id
+			AND a.AreaCode = #{areaCode};
+	</select>
+	<select id="getCurrentMMATemp" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT 
+		  a.CurrentAverageTemperature AS avgTemp,
+		  a.CurrentLowestTemperature AS minTemp,
+		  a.CurrentHighestTemperature AS maxTemp 
+		FROM
+		  weather_temperatureoftoday a 
+	<![CDATA[	WHERE DATE_FORMAT(a.DateTime, '%Y%m%d%H%i%s') <= DATE_FORMAT(NOW(), '%Y%m%d%H%i%s') ]]> 
+		  AND DATE_FORMAT(a.DateTime, '%Y%m%d%H%i%s') = 
+		  (SELECT 
+		    MAX(DATE_FORMAT(b.DateTime, '%Y%m%d%H%i%s')) 
+		  FROM
+		    weather_temperatureoftoday b)
+		  AND a.AreaCode = #{areaCode};
+	</select>
+	<select id="getCurrentMMAWind" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT 
+		  a.AverageWindSpeed AS avgWind,
+		  a.LowestWindSpeed AS minWind,
+		  a.HighestWindSpeed AS maxWind
+		FROM
+		  weather_windoftoday a 
+	<![CDATA[	WHERE DATE_FORMAT(a.DateTime, '%Y%m%d%H%i%s') <= DATE_FORMAT(NOW(), '%Y%m%d%H%i%s') ]]> 
+		  AND DATE_FORMAT(a.DateTime, '%Y%m%d%H%i%s') = 
+		  (SELECT 
+		    MAX(
+		      DATE_FORMAT(b.DateTime, '%Y%m%d%H%i%s')
+		    ) 
+		  FROM
+		    weather_windoftoday b)
+		  AND a.AreaCode = #{areaCode};
+	</select>
+	<select id="getCurrentMMARain" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT 
+		  a.AverageRainfall AS avgRain,
+		  a.LowestRainfall AS minRain,
+		  a.HighestRainfall AS maxRain
+		FROM
+		  weather_rainfalloftoday a 
+	<![CDATA[	WHERE DATE_FORMAT(a.DateTime, '%Y%m%d%H%i%s') <= DATE_FORMAT(NOW(), '%Y%m%d%H%i%s')  ]]> 
+		  AND DATE_FORMAT(a.DateTime, '%Y%m%d%H%i%s') = 
+		  (SELECT 
+		    MAX(
+		      DATE_FORMAT(b.DateTime, '%Y%m%d%H%i%s')
+		    ) 
+		  FROM
+		    weather_rainfalloftoday b)
+		  AND a.AreaCode = #{areaCode};
+	</select>
+	<select id="getTodayMMARain" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT 
+		  DATE_FORMAT(a.DateTime, '%H') AS label,
+		  a.Rainfall AS Rain,
+		  a.AverageRainfall AS avgRain,
+		  a.LowestRainfall AS minRain,
+		  a.HighestRainfall AS maxRain
+		FROM
+		  weather_rainfalloftoday a 
+	<![CDATA[	WHERE DATE_FORMAT(a.DateTime, '%Y%m%d') <= DATE_FORMAT(NOW(), '%Y%m%d')  ]]> 
+		  AND DATE_FORMAT(a.DateTime, '%Y%m%d') = 
+		  (SELECT 
+		    MAX(
+		      DATE_FORMAT(b.DateTime, '%Y%m%d')
+		    ) 
+		  FROM
+		    weather_rainfalloftoday b)
+		  AND a.AreaCode = #{areaCode}
+	    ORDER BY DATE_FORMAT(a.DateTime, '%H') ASC
+	</select>
+	<select id="getTodayMMATemp" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT 
+		  DATE_FORMAT(a.DateTime, '%H') AS label,
+		  a.Temperature AS Temp,
+		  a.CurrentAverageTemperature AS avgTemp,
+		  a.CurrentLowestTemperature AS minTemp,
+		  a.CurrentHighestTemperature AS maxTemp
+		FROM
+		  weather_temperatureoftoday a 
+	<![CDATA[	WHERE DATE_FORMAT(a.DateTime, '%Y%m%d') <= DATE_FORMAT(NOW(), '%Y%m%d')  ]]> 
+		  AND DATE_FORMAT(a.DateTime, '%Y%m%d') = 
+		  (SELECT 
+		    MAX(
+		      DATE_FORMAT(b.DateTime, '%Y%m%d')
+		    ) 
+		  FROM
+		    weather_temperatureoftoday b)
+		  AND a.AreaCode = #{areaCode}
+	    ORDER BY DATE_FORMAT(a.DateTime, '%H') ASC
+	</select>
+	<select id="getTodayMMAWind" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT 
+		  DATE_FORMAT(a.DateTime, '%H') AS label,
+		  a.WindSpeed AS Wind,
+		  a.AverageWindSpeed AS avgWind,
+		  a.LowestWindSpeed AS minWind,
+		  a.HighestWindSpeed AS maxWind 
+		FROM
+		  weather_windoftoday a 
+	<![CDATA[	WHERE DATE_FORMAT(a.DateTime, '%Y%m%d') <= DATE_FORMAT(NOW(), '%Y%m%d')  ]]> 
+		  AND DATE_FORMAT(a.DateTime, '%Y%m%d') = 
+		  (SELECT 
+		    MAX(DATE_FORMAT(b.DateTime, '%Y%m%d')) 
+		  FROM
+		    weather_windoftoday b) 
+		  AND a.AreaCode = #{areaCode}
+		ORDER BY DATE_FORMAT(a.DateTime, '%H') ASC 
+	</select>
+	
+	<select id="getMapInfo" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			a.AreaCode as areaCode,
+			a.Weather as weather,
+			c.CurrentHighestTemperature as max,
+			c.CurrentLowestTemperature as min
+		FROM
+			weather_realtimeweather a,
+			common_area b,
+			weather_temperatureoftoday c
+		WHERE
+			a.AreaCode = b.areaid
+		AND
+			a.AreaCode = c.AreaCode
+		AND
+			b.parentid = #{areaCode}
+		AND
+			c.DateTime = (SELECT MAX(DateTime) from weather_temperatureoftoday)
+		AND
+			a.Type = '实时'
+	</select>
+</mapper>

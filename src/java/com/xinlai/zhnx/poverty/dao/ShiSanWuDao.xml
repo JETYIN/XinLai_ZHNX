@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xinlai.zhnx.poverty.dao.ShiSanWuDao">
+<select id="queryCategoryLeavePoverty" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT
+				year,
+				numericalvalue
+			FROM
+				sswtp_sjblxt
+			where category = #{category};
+	</select>
+	
+<select id="queryAntPovertyPlanSum" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT
+				a.YEAR as year,
+				a.category as category,
+				(SELECT areaname from common_area where areaid = b.parentid) as areaname,
+				SUM(a.numericalvalue) as sl
+			FROM
+				sswtp_tpgh a,
+				common_area b
+			WHERE
+				a.areaid = b.areaid
+			GROUP BY a.YEAR,a.category,b.parentid
+</select>
+
+<select id="queryAntPovertyPlanBar" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT * FROM sswtp_tpgh;
+</select>
+
+<select id="queryAntPovertyPlan" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT
+				a.category as category,
+				(SELECT areaid from common_area where areaid = b.parentid) as areaid,
+				SUM(a.numericalvalue) as sl
+			FROM
+				sswtp_tpgh a,
+				common_area b
+			WHERE
+				a.areaid = b.areaid
+			AND
+				a.year = '2018'
+			GROUP BY a.YEAR,a.category,b.parentid
+</select>
+
+<select id="queryFiveOneSum" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT SUM(fzjytpyp) as fzjytpyp,
+				   SUM(shbzddyp) as shbzddyp,
+				   SUM(fzsctpyp) as fzsctpyp,
+				   SUM(ydfpbqyp) as ydfpbqyp
+			FROM tuopingfangxiang;
+</select>
+
+<select id="queryFiveOneBarqu" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT b.shiCode as areaid,
+			       SUM(a.fzjytpyp) as fzjytpyp,
+				     SUM(a.shbzddyp) as shbzddyp,
+				     SUM(a.fzsctpyp) as fzsctpyp,
+				     SUM(a.ydfpbqyp) as ydfpbqyp,
+						 c.areaname as areaname
+			FROM tuopingfangxiang a,a01_tab1_01 b,common_area c
+		    where a.id = b.id and b.shiCode = c.areaid GROUP BY b.shiCode;
+</select>
+
+<select id="queryFiveOneBarshi" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT b.xianCode as areaid,
+			       SUM(a.fzjytpyp) as fzjytpyp,
+				     SUM(a.shbzddyp) as shbzddyp,
+				     SUM(a.fzsctpyp) as fzsctpyp,
+				     SUM(a.ydfpbqyp) as ydfpbqyp,
+				   c.areaname as areaname
+			FROM tuopingfangxiang a,a01_tab1_01 b,common_area c 
+		    WHERE a.id = b.id AND b.xianCode = c.areaid AND b.shiCode = #{areaid} GROUP BY b.xianCode;
+</select>
+	
+</mapper>

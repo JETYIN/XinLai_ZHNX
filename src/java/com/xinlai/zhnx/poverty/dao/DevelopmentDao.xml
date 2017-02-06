@@ -1,0 +1,1117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xinlai.zhnx.poverty.dao.DevelopmentDao">
+
+	<select id="queryChildArea" parameterType="java.util.Map" resultType="java.util.Map">
+		select areaid, areaname from common_area WHERE ((parentid = #{childareacode}) OR (parentid in (select areaid from common_area where parentid =#{ningxiacode})) );
+	</select>
+	<select id="queryOpenInfo" parameterType="java.util.Map" resultType="java.util.Map">
+		select res.county as areacode, truncate(sum(res.notopenroad),2) as notopenroad, truncate(sum(res.notopenwater),2) as notopenwater, 
+		truncate(sum(res.total_p)-sum(res.openBb),2) as notopenBb, truncate(sum(res.notopenbusnum),2) as notopenbus, 
+		truncate(sum(res.total_p)-sum(res.openTV),2) as notopenTV
+		from (
+			select distinct b1.city,b1.azc002, b1.county,b1.azc003, b1.town,b1.azc004 ,b1.village,b1.azc005, b1.B2 as total_p, 
+			b2.B15 as notopenroad, b2.B20 as notopenwater, b2.B38 as openBb, 
+			(case
+				when b2.B16 = "否" then 1
+    			else 0
+    			end
+			)as notopenbusnum,
+			b2.B37 as openTV 
+			from query_b01_tab1 as b1 join query_b02_tab2 as b2 on b1.village = b2.areacode
+		) as res
+		group by county
+		UNION
+		select res.town as areacode, truncate(sum(res.notopenroad),2) as notopenroad, truncate(sum(res.notopenwater),2) as notopenwater, 
+		truncate(sum(res.total_p)-sum(res.openBb),2) as notopenBb, truncate(sum(res.notopenbusnum),2) as notopenbus, 
+		truncate(sum(res.total_p)-sum(res.openTV),2) as notopenTV
+		from (
+			select distinct b1.city,b1.azc002, b1.county,b1.azc003, b1.town,b1.azc004 ,b1.village,b1.azc005, b1.B2 as total_p, 
+			b2.B15 as notopenroad, b2.B20 as notopenwater, b2.B38 as openBb, 
+			(case
+				when b2.B16 = "否" then 1
+    			else 0
+    			end
+			)as notopenbusnum,
+			b2.B37 as openTV 
+			from query_b01_tab1 as b1 join query_b02_tab2 as b2 on b1.village = b2.areacode
+		) as res
+		group by town
+		UNION
+		select res.village as areacode, truncate(sum(res.notopenroad),2) as notopenroad, truncate(sum(res.notopenwater),2) as notopenwater, 
+		truncate(sum(res.total_p)-sum(res.openBb),2) as notopenBb, truncate(sum(res.notopenbusnum),2) as notopenbus, 
+		truncate(sum(res.total_p)-sum(res.openTV),2) as notopenTV
+		from (
+			select distinct b1.city,b1.azc002, b1.county,b1.azc003, b1.town,b1.azc004 ,b1.village,b1.azc005, b1.B2 as total_p, 
+			b2.B15 as notopenroad, b2.B20 as notopenwater, b2.B38 as openBb, 
+			(case
+				when b2.B16 = "否" then 1
+    			else 0
+    			end
+			)as notopenbusnum,
+			b2.B37 as openTV
+		from query_b01_tab1 as b1 join query_b02_tab2 as b2 on b1.village = b2.areacode
+		) as res
+		group by village;
+	</select>
+	
+	<select id="querypovertyneedsumqu" parameterType="java.lang.String" resultType="java.util.Map">
+		select '640000000000' as areacode,
+			'宁夏' as areaname,
+			a3b as type,
+			COUNT(*) as total from a01_tab1_01 GROUP BY a3b;
+	</select>
+	
+	<select id="querypovertyneedsumshi" parameterType="java.lang.String" resultType="java.util.Map">
+		select a.shiCode as areacode,
+			a.a3b as type,
+			b.areaname as areaname,
+			COUNT(*) as total from a01_tab1_01 a,common_area b  where a.shiCode = b.areaid and a.shiCode = #{areaid} GROUP BY a3b;
+	</select>
+	
+	<select id="querypovertyneedsumxian" parameterType="java.lang.String" resultType="java.util.Map">
+		select a.xianCode as areacode,
+			a.a3b as type,
+			b.areaname as areaname,
+			COUNT(*) as total from a01_tab1_01 a,common_area b where a.xianCode = b.areaid and xianCode = #{areaid} GROUP BY a3b,xiancode;
+	</select>
+	
+	<select id="querypovertyneedqu" parameterType="java.lang.String" resultType="java.util.Map">
+		select a.shicode as areacode,
+			a.a3b as type,
+			b.areaname,
+			COUNT(*) as total from a01_tab1_01 a,common_area b where a.shicode = b.areaid GROUP BY a3b,shicode;
+	</select>
+	
+	<select id="querypovertyneedshi" parameterType="java.lang.String" resultType="java.util.Map">
+		select a.xianCode as areacode,
+			a.a3b as type,
+			b.areaname,
+			COUNT(*) as total from a01_tab1_01 a,common_area b where a.xianCode = b.areaid  and shiCode = #{areaid} GROUP BY a3b,xiancode;
+	</select>
+	
+	<select id="querypovertyneedxian" parameterType="java.lang.String" resultType="java.util.Map">
+		select a.xianCode as areacode,
+			a.a3b as type,
+			b.areaname,
+			COUNT(*) as total from a01_tab1_01 a,common_area b where a.xiancode = b.areaid  and xianCode = #{areaid} GROUP BY a3b,xiancode;
+	</select>
+	
+	<select id="querypovertyneedbarqu" parameterType="java.lang.String" resultType="java.util.Map">
+		select a.shicode as areacode,
+			a.a3b as type,
+			b.areaname,
+			COUNT(*) as total from a01_tab1_01 a,common_area b where a.shicode = b.areaid  GROUP BY a3b,shicode;
+	</select>
+	
+	<select id="querypovertyneedbarshi" parameterType="java.lang.String" resultType="java.util.Map">
+		select a.xianCode as areacode,
+			a.a3b as type,
+			b.areaname,
+			COUNT(*) as total from a01_tab1_01 a,common_area b where a.xianCode = b.areaid and a3b != '' and shiCode = #{areaid} GROUP BY a3b,xiancode;
+	</select>
+	
+	<select id="querypovertyneedbarxian" parameterType="java.lang.String" resultType="java.util.Map">
+		select a.xiangcode as areacode,
+			a.a3b as type,
+			b.areaname,
+			COUNT(1) as total from a01_tab1_01 a,common_area b where a.xiangcode = b.areaid and a3b != '' and xianCode = #{areaid} GROUP BY a3b,xiangcode;
+	</select>
+	
+	<select id="querypovertyneedbarxiang" parameterType="java.lang.String" resultType="java.util.Map">
+		select a.cunCode as areacode,
+			a.a3b as type,
+			b.areaname,
+			COUNT(1) as total from a01_tab1_01 a,common_area b where a.cunCode = b.areaid and a3b != '' and xiangCode = #{areaid} GROUP BY a3b,cunCode;
+	</select>
+	
+	<!-- 产业发展 -->
+	<select id="queryindustryinfosumqu" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT 
+			  COUNT(
+			    DISTINCT IF(
+			      a.an24a != '' 
+			      OR a.an24a != NULL 
+			      OR a.AN24b != '' 
+			      OR a.AN24b != NULL 
+			      OR a.AN24c != '' 
+			      OR a.AN24c != NULL,
+			      a.id,
+			      NULL
+			    )
+			  ) AS yzxq,
+			  COUNT(
+			    DISTINCT IF(
+			      a.an25a != '' 
+			      OR a.an25a != NULL 
+			      OR a.AN25b != '' 
+			      OR a.AN25b != NULL 
+			      OR a.AN25c != '' 
+			      OR a.AN25c != NULL,
+			      a.id,
+			      NULL
+			    )
+			  ) AS zzxq,
+			  COUNT(
+			    DISTINCT IF(
+			      a.AN26 != '' 
+			      OR a.AN26 != NULL,
+			      a.id,
+			      NULL
+			    )
+			  ) AS yzssxq,
+			  COUNT(
+			    DISTINCT IF(
+			      a.AN26a != '' 
+			      OR a.AN26a != NULL,
+			      a.id,
+			      NULL
+			    )
+			  ) AS zzssxq,
+			  COUNT(
+			    DISTINCT IF(
+			      a.AN26b != '' 
+			      OR a.AN26b != NULL,
+			      a.id,
+			      NULL
+			    )
+			  ) AS njssxq,
+			  COUNT(
+			    DISTINCT IF(
+			      a.AN27a != '' 
+			      OR a.AN27a != NULL,
+			      a.id,
+			      NULL
+			    )
+			  ) AS jsxq,
+			  COUNT(
+			    DISTINCT IF(
+			      a.AN28b != '' 
+			      OR a.AN28b != NULL,
+			      a.id,
+			      NULL
+			    )
+			  ) AS gtjyxq
+			FROM
+			  a05_tab5 a;
+	</select>
+	<select id="queryindustryinfosumshi" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT 
+			  COUNT(
+			    DISTINCT IF(
+			      a.an24a != '' 
+			      OR a.an24a != NULL 
+			      OR a.AN24b != '' 
+			      OR a.AN24b != NULL 
+			      OR a.AN24c != '' 
+			      OR a.AN24c != NULL,
+			      a.id,
+			      NULL
+			    )
+			  ) AS yzxq,
+			  COUNT(
+			    DISTINCT IF(
+			      a.an25a != '' 
+			      OR a.an25a != NULL 
+			      OR a.AN25b != '' 
+			      OR a.AN25b != NULL 
+			      OR a.AN25c != '' 
+			      OR a.AN25c != NULL,
+			      a.id,
+			      NULL
+			    )
+			  ) AS zzxq,
+			  COUNT(
+			    DISTINCT IF(
+			      a.AN26 != '' 
+			      OR a.AN26 != NULL,
+			      a.id,
+			      NULL
+			    )
+			  ) AS yzssxq,
+			  COUNT(
+			    DISTINCT IF(
+			      a.AN26a != '' 
+			      OR a.AN26a != NULL,
+			      a.id,
+			      NULL
+			    )
+			  ) AS zzssxq,
+			  COUNT(
+			    DISTINCT IF(
+			      a.AN26b != '' 
+			      OR a.AN26b != NULL,
+			      a.id,
+			      NULL
+			    )
+			  ) AS njssxq,
+			  COUNT(
+			    DISTINCT IF(
+			      a.AN27a != '' 
+			      OR a.AN27a != NULL,
+			      a.id,
+			      NULL
+			    )
+			  ) AS jsxq,
+			  COUNT(
+			    DISTINCT IF(
+			      a.AN28b != '' 
+			      OR a.AN28b != NULL,
+			      a.id,
+			      NULL
+			    )
+			  ) AS gtjyxq
+			FROM
+			  a05_tab5 a,
+			  a01_tab1_01 b 
+			WHERE a.id = b.id
+			  AND b.shiCode = #{areaid} ;
+	</select>
+	<select id="queryindustryinfosumxian" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT 
+			  COUNT(
+			    DISTINCT IF(
+			      a.an24a != '' 
+			      OR a.an24a != NULL 
+			      OR a.AN24b != '' 
+			      OR a.AN24b != NULL 
+			      OR a.AN24c != '' 
+			      OR a.AN24c != NULL,
+			      a.id,
+			      NULL
+			    )
+			  ) AS yzxq,
+			  COUNT(
+			    DISTINCT IF(
+			      a.an25a != '' 
+			      OR a.an25a != NULL 
+			      OR a.AN25b != '' 
+			      OR a.AN25b != NULL 
+			      OR a.AN25c != '' 
+			      OR a.AN25c != NULL,
+			      a.id,
+			      NULL
+			    )
+			  ) AS zzxq,
+			  COUNT(
+			    DISTINCT IF(
+			      a.AN26 != '' 
+			      OR a.AN26 != NULL,
+			      a.id,
+			      NULL
+			    )
+			  ) AS yzssxq,
+			  COUNT(
+			    DISTINCT IF(
+			      a.AN26a != '' 
+			      OR a.AN26a != NULL,
+			      a.id,
+			      NULL
+			    )
+			  ) AS zzssxq,
+			  COUNT(
+			    DISTINCT IF(
+			      a.AN26b != '' 
+			      OR a.AN26b != NULL,
+			      a.id,
+			      NULL
+			    )
+			  ) AS njssxq,
+			  COUNT(
+			    DISTINCT IF(
+			      a.AN27a != '' 
+			      OR a.AN27a != NULL,
+			      a.id,
+			      NULL
+			    )
+			  ) AS jsxq,
+			  COUNT(
+			    DISTINCT IF(
+			      a.AN28b != '' 
+			      OR a.AN28b != NULL,
+			      a.id,
+			      NULL
+			    )
+			  ) AS gtjyxq
+			FROM
+			  a05_tab5 a,
+			  a01_tab1_01 b 
+			WHERE a.id = b.id
+			  AND b.xianCode = #{areaid} ;
+	</select>
+	<select id="queryindustryinfoqu" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT 
+			  COUNT(
+			    DISTINCT IF(
+			      a.an24a != '' 
+			      OR a.an24a != NULL 
+			      OR a.AN24b != '' 
+			      OR a.AN24b != NULL 
+			      OR a.AN24c != '' 
+			      OR a.AN24c != NULL,
+			      a.id,
+			      NULL
+			    )
+			  ) AS yzxq,
+			  COUNT(
+			    DISTINCT IF(
+			      a.an25a != '' 
+			      OR a.an25a != NULL 
+			      OR a.AN25b != '' 
+			      OR a.AN25b != NULL 
+			      OR a.AN25c != '' 
+			      OR a.AN25c != NULL,
+			      a.id,
+			      NULL
+			    )
+			  ) AS zzxq,
+			  COUNT(
+			    DISTINCT IF(
+			      a.AN26 != '' 
+			      OR a.AN26 != NULL,
+			      a.id,
+			      NULL
+			    )
+			  ) AS yzssxq,
+			  COUNT(
+			    DISTINCT IF(
+			      a.AN26a != '' 
+			      OR a.AN26a != NULL,
+			      a.id,
+			      NULL
+			    )
+			  ) AS zzssxq,
+			  COUNT(
+			    DISTINCT IF(
+			      a.AN26b != '' 
+			      OR a.AN26b != NULL,
+			      a.id,
+			      NULL
+			    )
+			  ) AS njssxq,
+			  COUNT(
+			    DISTINCT IF(
+			      a.AN27a != '' 
+			      OR a.AN27a != NULL,
+			      a.id,
+			      NULL
+			    )
+			  ) AS jsxq,
+			  COUNT(
+			    DISTINCT IF(
+			      a.AN28b != '' 
+			      OR a.AN28b != NULL,
+			      a.id,
+			      NULL
+			    )
+			  ) AS gtjyxq,
+			  b.shiCode as areacode,
+			  c.areaname 
+			FROM
+			  a05_tab5 a,
+			  a01_tab1_01 b,
+			  common_area c 
+			WHERE a.id = b.id 
+			  AND b.shiCode = c.areaid 
+			GROUP BY b.shiCode ;
+	</select>
+	<select id="queryindustryinfoshi" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT 
+		  COUNT(
+		    DISTINCT IF(
+		      a.an24a != '' 
+		      OR a.an24a != NULL 
+		      OR a.AN24b != '' 
+		      OR a.AN24b != NULL 
+		      OR a.AN24c != '' 
+		      OR a.AN24c != NULL,
+		      a.id,
+		      NULL
+		    )
+		  ) AS yzxq,
+		  COUNT(
+		    DISTINCT IF(
+		      a.an25a != '' 
+		      OR a.an25a != NULL 
+		      OR a.AN25b != '' 
+		      OR a.AN25b != NULL 
+		      OR a.AN25c != '' 
+		      OR a.AN25c != NULL,
+		      a.id,
+		      NULL
+		    )
+		  ) AS zzxq,
+		  COUNT(
+		    DISTINCT IF(
+		      a.AN26 != '' 
+		      OR a.AN26 != NULL,
+		      a.id,
+		      NULL
+		    )
+		  ) AS yzssxq,
+		  COUNT(
+		    DISTINCT IF(
+		      a.AN26a != '' 
+		      OR a.AN26a != NULL,
+		      a.id,
+		      NULL
+		    )
+		  ) AS zzssxq,
+		  COUNT(
+		    DISTINCT IF(
+		      a.AN26b != '' 
+		      OR a.AN26b != NULL,
+		      a.id,
+		      NULL
+		    )
+		  ) AS njssxq,
+		  COUNT(
+		    DISTINCT IF(
+		      a.AN27a != '' 
+		      OR a.AN27a != NULL,
+		      a.id,
+		      NULL
+		    )
+		  ) AS jsxq,
+		  COUNT(
+		    DISTINCT IF(
+		      a.AN28b != '' 
+		      OR a.AN28b != NULL,
+		      a.id,
+		      NULL
+		    )
+		  ) AS gtjyxq,
+		  b.xianCode as areacode,
+		  c.areaname 
+		FROM
+		  a05_tab5 a,
+		  a01_tab1_01 b,
+		  common_area c 
+		WHERE a.id = b.id 
+		  AND b.xianCode = c.areaid
+		  and b.shiCode = #{areaid}
+		GROUP BY b.xianCode ;
+	</select>
+	<select id="queryindustryinfoxian" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT 
+		  COUNT(
+		    DISTINCT IF(
+		      a.an24a != '' 
+		      OR a.an24a != NULL 
+		      OR a.AN24b != '' 
+		      OR a.AN24b != NULL 
+		      OR a.AN24c != '' 
+		      OR a.AN24c != NULL,
+		      a.id,
+		      NULL
+		    )
+		  ) AS yzxq,
+		  COUNT(
+		    DISTINCT IF(
+		      a.an25a != '' 
+		      OR a.an25a != NULL 
+		      OR a.AN25b != '' 
+		      OR a.AN25b != NULL 
+		      OR a.AN25c != '' 
+		      OR a.AN25c != NULL,
+		      a.id,
+		      NULL
+		    )
+		  ) AS zzxq,
+		  COUNT(
+		    DISTINCT IF(
+		      a.AN26 != '' 
+		      OR a.AN26 != NULL,
+		      a.id,
+		      NULL
+		    )
+		  ) AS yzssxq,
+		  COUNT(
+		    DISTINCT IF(
+		      a.AN26a != '' 
+		      OR a.AN26a != NULL,
+		      a.id,
+		      NULL
+		    )
+		  ) AS zzssxq,
+		  COUNT(
+		    DISTINCT IF(
+		      a.AN26b != '' 
+		      OR a.AN26b != NULL,
+		      a.id,
+		      NULL
+		    )
+		  ) AS njssxq,
+		  COUNT(
+		    DISTINCT IF(
+		      a.AN27a != '' 
+		      OR a.AN27a != NULL,
+		      a.id,
+		      NULL
+		    )
+		  ) AS jsxq,
+		  COUNT(
+		    DISTINCT IF(
+		      a.AN28b != '' 
+		      OR a.AN28b != NULL,
+		      a.id,
+		      NULL
+		    )
+		  ) AS gtjyxq,
+		  b.xianCode as areacode,
+		  c.areaname 
+		FROM
+		  a05_tab5 a,
+		  a01_tab1_01 b,
+		  common_area c 
+		WHERE a.id = b.id 
+		  AND b.xianCode = c.areaid
+		  and b.xianCode = #{areaid}
+		GROUP BY b.xianCode ;
+	</select>
+	<select id="queryindustryinfobarqu" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT 
+			  COUNT(
+			    DISTINCT IF(
+			      a.an24a != '' 
+			      OR a.an24a != NULL 
+			      OR a.AN24b != '' 
+			      OR a.AN24b != NULL 
+			      OR a.AN24c != '' 
+			      OR a.AN24c != NULL,
+			      a.id,
+			      NULL
+			    )
+			  ) AS yzxq,
+			  COUNT(
+			    DISTINCT IF(
+			      a.an25a != '' 
+			      OR a.an25a != NULL 
+			      OR a.AN25b != '' 
+			      OR a.AN25b != NULL 
+			      OR a.AN25c != '' 
+			      OR a.AN25c != NULL,
+			      a.id,
+			      NULL
+			    )
+			  ) AS zzxq,
+			  COUNT(
+			    DISTINCT IF(
+			      a.AN26 != '' 
+			      OR a.AN26 != NULL,
+			      a.id,
+			      NULL
+			    )
+			  ) AS yzssxq,
+			  COUNT(
+			    DISTINCT IF(
+			      a.AN26a != '' 
+			      OR a.AN26a != NULL,
+			      a.id,
+			      NULL
+			    )
+			  ) AS zzssxq,
+			  COUNT(
+			    DISTINCT IF(
+			      a.AN26b != '' 
+			      OR a.AN26b != NULL,
+			      a.id,
+			      NULL
+			    )
+			  ) AS njssxq,
+			  COUNT(
+			    DISTINCT IF(
+			      a.AN27a != '' 
+			      OR a.AN27a != NULL,
+			      a.id,
+			      NULL
+			    )
+			  ) AS jsxq,
+			  COUNT(
+			    DISTINCT IF(
+			      a.AN28b != '' 
+			      OR a.AN28b != NULL,
+			      a.id,
+			      NULL
+			    )
+			  ) AS gtjyxq,
+			  b.shiCode as areacode,
+			  c.areaname 
+			FROM
+			  a05_tab5 a,
+			  a01_tab1_01 b,
+			  common_area c 
+			WHERE a.id = b.id 
+			  AND b.shiCode = c.areaid 
+			GROUP BY b.shiCode ;
+	</select>
+	<select id="queryindustryinfobarshi" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT 
+		  COUNT(
+		    DISTINCT IF(
+		      a.an24a != '' 
+		      OR a.an24a != NULL 
+		      OR a.AN24b != '' 
+		      OR a.AN24b != NULL 
+		      OR a.AN24c != '' 
+		      OR a.AN24c != NULL,
+		      a.id,
+		      NULL
+		    )
+		  ) AS yzxq,
+		  COUNT(
+		    DISTINCT IF(
+		      a.an25a != '' 
+		      OR a.an25a != NULL 
+		      OR a.AN25b != '' 
+		      OR a.AN25b != NULL 
+		      OR a.AN25c != '' 
+		      OR a.AN25c != NULL,
+		      a.id,
+		      NULL
+		    )
+		  ) AS zzxq,
+		  COUNT(
+		    DISTINCT IF(
+		      a.AN26 != '' 
+		      OR a.AN26 != NULL,
+		      a.id,
+		      NULL
+		    )
+		  ) AS yzssxq,
+		  COUNT(
+		    DISTINCT IF(
+		      a.AN26a != '' 
+		      OR a.AN26a != NULL,
+		      a.id,
+		      NULL
+		    )
+		  ) AS zzssxq,
+		  COUNT(
+		    DISTINCT IF(
+		      a.AN26b != '' 
+		      OR a.AN26b != NULL,
+		      a.id,
+		      NULL
+		    )
+		  ) AS njssxq,
+		  COUNT(
+		    DISTINCT IF(
+		      a.AN27a != '' 
+		      OR a.AN27a != NULL,
+		      a.id,
+		      NULL
+		    )
+		  ) AS jsxq,
+		  COUNT(
+		    DISTINCT IF(
+		      a.AN28b != '' 
+		      OR a.AN28b != NULL,
+		      a.id,
+		      NULL
+		    )
+		  ) AS gtjyxq,
+		  b.xianCode as areacode,
+		  c.areaname 
+		FROM
+		  a05_tab5 a,
+		  a01_tab1_01 b,
+		  common_area c 
+		WHERE a.id = b.id 
+		  AND b.xianCode = c.areaid
+		  and b.shiCode = #{areaid}
+		GROUP BY b.xianCode ;
+	</select>
+	<select id="queryindustryinfobarxian" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT 
+		  COUNT(
+		    DISTINCT IF(
+		      a.an24a != '' 
+		      OR a.an24a != NULL 
+		      OR a.AN24b != '' 
+		      OR a.AN24b != NULL 
+		      OR a.AN24c != '' 
+		      OR a.AN24c != NULL,
+		      a.id,
+		      NULL
+		    )
+		  ) AS yzxq,
+		  COUNT(
+		    DISTINCT IF(
+		      a.an25a != '' 
+		      OR a.an25a != NULL 
+		      OR a.AN25b != '' 
+		      OR a.AN25b != NULL 
+		      OR a.AN25c != '' 
+		      OR a.AN25c != NULL,
+		      a.id,
+		      NULL
+		    )
+		  ) AS zzxq,
+		  COUNT(
+		    DISTINCT IF(
+		      a.AN26 != '' 
+		      OR a.AN26 != NULL,
+		      a.id,
+		      NULL
+		    )
+		  ) AS yzssxq,
+		  COUNT(
+		    DISTINCT IF(
+		      a.AN26a != '' 
+		      OR a.AN26a != NULL,
+		      a.id,
+		      NULL
+		    )
+		  ) AS zzssxq,
+		  COUNT(
+		    DISTINCT IF(
+		      a.AN26b != '' 
+		      OR a.AN26b != NULL,
+		      a.id,
+		      NULL
+		    )
+		  ) AS njssxq,
+		  COUNT(
+		    DISTINCT IF(
+		      a.AN27a != '' 
+		      OR a.AN27a != NULL,
+		      a.id,
+		      NULL
+		    )
+		  ) AS jsxq,
+		  COUNT(
+		    DISTINCT IF(
+		      a.AN28b != '' 
+		      OR a.AN28b != NULL,
+		      a.id,
+		      NULL
+		    )
+		  ) AS gtjyxq,
+		  b.xiangCode as areacode,
+		  c.areaname 
+		FROM
+		  a05_tab5 a,
+		  a01_tab1_01 b,
+		  common_area c 
+		WHERE a.id = b.id 
+		  AND b.xiangCode = c.areaid
+		  and b.xianCode = #{areaid}
+		GROUP BY b.xiangCode ;
+	</select>
+	<select id="queryindustryinfobarxiang" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT 
+		  COUNT(
+		    DISTINCT IF(
+		      a.an24a != '' 
+		      OR a.an24a != NULL 
+		      OR a.AN24b != '' 
+		      OR a.AN24b != NULL 
+		      OR a.AN24c != '' 
+		      OR a.AN24c != NULL,
+		      a.id,
+		      NULL
+		    )
+		  ) AS yzxq,
+		  COUNT(
+		    DISTINCT IF(
+		      a.an25a != '' 
+		      OR a.an25a != NULL 
+		      OR a.AN25b != '' 
+		      OR a.AN25b != NULL 
+		      OR a.AN25c != '' 
+		      OR a.AN25c != NULL,
+		      a.id,
+		      NULL
+		    )
+		  ) AS zzxq,
+		  COUNT(
+		    DISTINCT IF(
+		      a.AN26 != '' 
+		      OR a.AN26 != NULL,
+		      a.id,
+		      NULL
+		    )
+		  ) AS yzssxq,
+		  COUNT(
+		    DISTINCT IF(
+		      a.AN26a != '' 
+		      OR a.AN26a != NULL,
+		      a.id,
+		      NULL
+		    )
+		  ) AS zzssxq,
+		  COUNT(
+		    DISTINCT IF(
+		      a.AN26b != '' 
+		      OR a.AN26b != NULL,
+		      a.id,
+		      NULL
+		    )
+		  ) AS njssxq,
+		  COUNT(
+		    DISTINCT IF(
+		      a.AN27a != '' 
+		      OR a.AN27a != NULL,
+		      a.id,
+		      NULL
+		    )
+		  ) AS jsxq,
+		  COUNT(
+		    DISTINCT IF(
+		      a.AN28b != '' 
+		      OR a.AN28b != NULL,
+		      a.id,
+		      NULL
+		    )
+		  ) AS gtjyxq,
+		  b.cunCode as areacode,
+		  c.areaname 
+		FROM
+		  a05_tab5 a,
+		  a01_tab1_01 b,
+		  common_area c 
+		WHERE a.id = b.id 
+		  AND b.cunCode = c.areaid
+		  and b.xiangCode = #{areaid}
+		GROUP BY b.cunCode ;
+	</select>
+	<select id="queryinformationinfosumqu" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			COUNT(IF(an5 = '是',true, NULL)) as kdyes,
+			COUNT(IF(an5 = '否',true, NULL)) as kdno,
+			COUNT(IF(an6 = '是',true, NULL)) as sjswyes,
+			COUNT(IF(an6 = '否',true, NULL)) as sjswno,
+			COUNT(IF(a24 = '是',true, NULL)) as gbdsyes,
+			COUNT(IF(a24 = '否',true, NULL)) as gbdsno
+		FROM
+			a01_tab2;
+	</select>
+	<select id="queryinformationinfosumshi" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			COUNT(IF(a.an5 = '是',true, NULL)) as kdyes,
+			COUNT(IF(a.an5 = '否',true, NULL)) as kdno,
+			COUNT(IF(a.an6 = '是',true, NULL)) as sjswyes,
+			COUNT(IF(a.an6 = '否',true, NULL)) as sjswno,
+			COUNT(IF(a.a24 = '是',true, NULL)) as gbdsyes,
+			COUNT(IF(a.a24 = '否',true, NULL)) as gbdsno
+		FROM
+			a01_tab2 a,a01_tab1_01 b where a.id = b.id and b.shiCode = #{areaid}
+	</select>
+	<select id="queryinformationinfosumxian" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			COUNT(IF(a.an5 = '是',true, NULL)) as kdyes,
+			COUNT(IF(a.an5 = '否',true, NULL)) as kdno,
+			COUNT(IF(a.an6 = '是',true, NULL)) as sjswyes,
+			COUNT(IF(a.an6 = '否',true, NULL)) as sjswno,
+			COUNT(IF(a.a24 = '是',true, NULL)) as gbdsyes,
+			COUNT(IF(a.a24 = '否',true, NULL)) as gbdsno
+		FROM
+			a01_tab2 a,a01_tab1_01 b where a.id = b.id and b.xianCode = #{areaid}
+	</select>
+	<select id="queryinformationinfoqu" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			COUNT(IF(a.an5 = '是',true, NULL)) as kdyes,
+			COUNT(IF(a.an5 = '否',true, NULL)) as kdno,
+			COUNT(IF(a.an6 = '是',true, NULL)) as sjswyes,
+			COUNT(IF(a.an6 = '否',true, NULL)) as sjswno,
+			COUNT(IF(a.a24 = '是',true, NULL)) as gbdsyes,
+			COUNT(IF(a.a24 = '否',true, NULL)) as gbdsno,
+			b.shicode as areaid,	
+			c.areaname as areaname
+		FROM
+			a01_tab2 a,a01_tab1_01 b,common_area c where a.id = b.id and b.shiCode = c.areaid GROUP BY b.shiCode
+	</select>
+	<select id="queryinformationinfoshi" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			COUNT(IF(a.an5 = '是',true, NULL)) as kdyes,
+			COUNT(IF(a.an5 = '否',true, NULL)) as kdno,
+			COUNT(IF(a.an6 = '是',true, NULL)) as sjswyes,
+			COUNT(IF(a.an6 = '否',true, NULL)) as sjswno,
+			COUNT(IF(a.a24 = '是',true, NULL)) as gbdsyes,
+			COUNT(IF(a.a24 = '否',true, NULL)) as gbdsno,
+			b.xiancode as areaid,	
+			c.areaname as areaname
+		FROM
+			a01_tab2 a,a01_tab1_01 b,common_area c 
+		where a.id = b.id and b.xianCode = c.areaid and b.shiCode = #{areaid}
+		GROUP BY b.xianCode
+	</select>
+	<select id="queryinformationinfoxian" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			COUNT(IF(a.an5 = '是',true, NULL)) as kdyes,
+			COUNT(IF(a.an5 = '否',true, NULL)) as kdno,
+			COUNT(IF(a.an6 = '是',true, NULL)) as sjswyes,
+			COUNT(IF(a.an6 = '否',true, NULL)) as sjswno,
+			COUNT(IF(a.a24 = '是',true, NULL)) as gbdsyes,
+			COUNT(IF(a.a24 = '否',true, NULL)) as gbdsno,
+			b.xiancode as areaid,	
+			c.areaname as areaname
+		FROM
+			a01_tab2 a,a01_tab1_01 b,common_area c 
+		where a.id = b.id and b.xianCode = c.areaid and b.xianCode = #{areaid}
+		GROUP BY b.xianCode
+	</select>
+		<select id="queryinformationinfobarqu" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			COUNT(IF(a.an5 = '是',true, NULL)) as kdyes,
+			COUNT(IF(a.an5 = '否',true, NULL)) as kdno,
+			COUNT(IF(a.an6 = '是',true, NULL)) as sjswyes,
+			COUNT(IF(a.an6 = '否',true, NULL)) as sjswno,
+			COUNT(IF(a.a24 = '是',true, NULL)) as gbdsyes,
+			COUNT(IF(a.a24 = '否',true, NULL)) as gbdsno,
+			b.shicode as areacode,	
+			c.areaname as areaname
+		FROM
+			a01_tab2 a,a01_tab1_01 b,common_area c where a.id = b.id and b.shiCode = c.areaid GROUP BY b.shiCode
+	</select>
+	<select id="queryinformationinfobarshi" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			COUNT(IF(a.an5 = '是',true, NULL)) as kdyes,
+			COUNT(IF(a.an5 = '否',true, NULL)) as kdno,
+			COUNT(IF(a.an6 = '是',true, NULL)) as sjswyes,
+			COUNT(IF(a.an6 = '否',true, NULL)) as sjswno,
+			COUNT(IF(a.a24 = '是',true, NULL)) as gbdsyes,
+			COUNT(IF(a.a24 = '否',true, NULL)) as gbdsno,
+			b.xiancode as areacode,	
+			c.areaname as areaname
+		FROM
+			a01_tab2 a,a01_tab1_01 b,common_area c 
+		where a.id = b.id and b.xianCode = c.areaid and b.shiCode = #{areaid}
+		GROUP BY b.xianCode
+	</select>
+	<select id="queryinformationinfobarxian" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			COUNT(IF(a.an5 = '是',true, NULL)) as kdyes,
+			COUNT(IF(a.an5 = '否',true, NULL)) as kdno,
+			COUNT(IF(a.an6 = '是',true, NULL)) as sjswyes,
+			COUNT(IF(a.an6 = '否',true, NULL)) as sjswno,
+			COUNT(IF(a.a24 = '是',true, NULL)) as gbdsyes,
+			COUNT(IF(a.a24 = '否',true, NULL)) as gbdsno,
+			b.xiangcode as areacode,	
+			c.areaname as areaname
+		FROM
+			a01_tab2 a,a01_tab1_01 b,common_area c 
+		where a.id = b.id and b.xiangCode = c.areaid and b.xianCode = #{areaid}
+		GROUP BY b.xiangCode
+	</select>
+	<select id="queryinformationinfobarxiang" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			COUNT(IF(a.an5 = '是',true, NULL)) as kdyes,
+			COUNT(IF(a.an5 = '否',true, NULL)) as kdno,
+			COUNT(IF(a.an6 = '是',true, NULL)) as sjswyes,
+			COUNT(IF(a.an6 = '否',true, NULL)) as sjswno,
+			COUNT(IF(a.a24 = '是',true, NULL)) as gbdsyes,
+			COUNT(IF(a.a24 = '否',true, NULL)) as gbdsno,
+			b.cuncode as areacode,	
+			c.areaname as areaname
+		FROM
+			a01_tab2 a,a01_tab1_01 b,common_area c 
+		where a.id = b.id and b.cunCode = c.areaid and b.xiangCode = #{areaid}
+		GROUP BY b.cunCode
+	</select>
+	<select id="queryabilityinfosumqu" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT COUNT(1) as jhpx,
+			 COUNT(if(an42a_5!='',TRUE,NULL)) as ypx, 
+			 COUNT(if(an42a_5='',TRUE,NULL)) as wpx,
+			 COUNT(if(an42a_9!='',TRUE,NULL)) as yqz, 
+			 COUNT(if(an42a_9='',TRUE,NULL)) as wqz
+			from a08_tab8 
+	</select>
+	<select id="queryabilityinfosumshi" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT COUNT(1) as jhpx,
+			 COUNT(if(a.an42a_5!='',TRUE,NULL)) as ypx, 
+			 COUNT(if(a.an42a_5='',TRUE,NULL)) as wpx,
+			 COUNT(if(a.an42a_9!='',TRUE,NULL)) as yqz, 
+			 COUNT(if(a.an42a_9='',TRUE,NULL)) as wqz
+			from a08_tab8 a,a01_tab1_01 b where a.id = b.id and b.shiCode = #{areaid}
+	</select>
+	<select id="queryabilityinfosumxian" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT COUNT(1) as jhpx,
+			 COUNT(if(a.an42a_5!='',TRUE,NULL)) as ypx, 
+			 COUNT(if(a.an42a_5='',TRUE,NULL)) as wpx,
+			 COUNT(if(a.an42a_9!='',TRUE,NULL)) as yqz, 
+			 COUNT(if(a.an42a_9='',TRUE,NULL)) as wqz
+			from a08_tab8 a,a01_tab1_01 b where a.id = b.id and b.xianCode = #{areaid}
+	</select>
+	<select id="queryabilityinfoqu" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT COUNT(1) as jhpx,
+			 COUNT(if(a.an42a_5!='',TRUE,NULL)) as ypx, 
+			 COUNT(if(a.an42a_5='',TRUE,NULL)) as wpx,
+			 COUNT(if(a.an42a_9!='',TRUE,NULL)) as yqz, 
+			 COUNT(if(a.an42a_9='',TRUE,NULL)) as wqz,
+			 b.shiCode as areaid,
+			 c.areaname as areaname
+			from a08_tab8 a,a01_tab1_01 b,common_area c 
+		  where a.id = b.id and b.shiCode = c.areaid GROUP BY b.shiCode
+	</select>
+	<select id="queryabilityinfoshi" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT COUNT(1) as jhpx,
+			 COUNT(if(a.an42a_5!='',TRUE,NULL)) as ypx, 
+			 COUNT(if(a.an42a_5='',TRUE,NULL)) as wpx,
+			 COUNT(if(a.an42a_9!='',TRUE,NULL)) as yqz, 
+			 COUNT(if(a.an42a_9='',TRUE,NULL)) as wqz,
+			 b.xianCode as areaid,
+			 c.areaname as areaname
+			from a08_tab8 a,a01_tab1_01 b,common_area c 
+		  where a.id = b.id and b.xianCode = c.areaid and b.shiCode = #{areaid} GROUP BY b.xianCode
+	</select>
+	<select id="queryabilityinfoxian" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT COUNT(1) as jhpx,
+			 COUNT(if(a.an42a_5!='',TRUE,NULL)) as ypx, 
+			 COUNT(if(a.an42a_5='',TRUE,NULL)) as wpx,
+			 COUNT(if(a.an42a_9!='',TRUE,NULL)) as yqz, 
+			 COUNT(if(a.an42a_9='',TRUE,NULL)) as wqz,
+			 b.xianCode as areaid,
+			 c.areaname as areaname
+			from a08_tab8 a,a01_tab1_01 b,common_area c 
+		  where a.id = b.id and b.xianCode = c.areaid and b.xianCode = #{areaid} GROUP BY b.xianCode
+	</select>
+	<select id="queryabilityinfobarqu" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT COUNT(1) as jhpx,
+			 COUNT(if(a.an42a_5!='',TRUE,NULL)) as ypx, 
+			 COUNT(if(a.an42a_5='',TRUE,NULL)) as wpx,
+			 COUNT(if(a.an42a_9!='',TRUE,NULL)) as yqz, 
+			 COUNT(if(a.an42a_9='',TRUE,NULL)) as wqz,
+			 b.shiCode as areacode,
+			 c.areaname as areaname
+			from a08_tab8 a,a01_tab1_01 b,common_area c 
+		  where a.id = b.id and b.shiCode = c.areaid GROUP BY b.shiCode
+	</select>
+	<select id="queryabilityinfobarshi" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT COUNT(1) as jhpx,
+			 COUNT(if(a.an42a_5!='',TRUE,NULL)) as ypx, 
+			 COUNT(if(a.an42a_5='',TRUE,NULL)) as wpx,
+			 COUNT(if(a.an42a_9!='',TRUE,NULL)) as yqz, 
+			 COUNT(if(a.an42a_9='',TRUE,NULL)) as wqz,
+			 b.xianCode as areacode,
+			 c.areaname as areaname
+			from a08_tab8 a,a01_tab1_01 b,common_area c 
+		  where a.id = b.id and b.xianCode = c.areaid and b.shiCode = #{areaid} GROUP BY b.xianCode
+	</select>
+	<select id="queryabilityinfobarxian" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT COUNT(1) as jhpx,
+			 COUNT(if(a.an42a_5!='',TRUE,NULL)) as ypx, 
+			 COUNT(if(a.an42a_5='',TRUE,NULL)) as wpx,
+			 COUNT(if(a.an42a_9!='',TRUE,NULL)) as yqz, 
+			 COUNT(if(a.an42a_9='',TRUE,NULL)) as wqz,
+			 b.xiangCode as areacode,
+			 c.areaname as areaname
+			from a08_tab8 a,a01_tab1_01 b,common_area c 
+		  where a.id = b.id and b.xiangCode = c.areaid and b.xianCode = #{areaid} GROUP BY b.xiangCode
+	</select>
+	<select id="queryabilityinfobarxiang" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT COUNT(1) as jhpx,
+			 COUNT(if(a.an42a_5!='',TRUE,NULL)) as ypx, 
+			 COUNT(if(a.an42a_5='',TRUE,NULL)) as wpx,
+			 COUNT(if(a.an42a_9!='',TRUE,NULL)) as yqz, 
+			 COUNT(if(a.an42a_9='',TRUE,NULL)) as wqz,
+			 b.cunCode as areacode,
+			 c.areaname as areaname
+			from a08_tab8 a,a01_tab1_01 b,common_area c 
+		  where a.id = b.id and b.cunCode = c.areaid and b.xiangCode = #{areaid} GROUP BY b.cunCode
+	</select>
+</mapper>

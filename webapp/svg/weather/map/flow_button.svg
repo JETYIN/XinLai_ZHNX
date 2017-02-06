@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="flow_button" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+<style type="text/css">
+	.flow_button_st0{fill:#00BEFF;}
+	.flow_button_st1{opacity:0.3;fill:url(#XMLID_30_);}
+	.flow_button_st2{fill:none;stroke:#00BEFF;stroke-miterlimit:10;}
+</style>
+<g id="XMLID_28_">
+	<polygon id="XMLID_9360_" class="flow_button_st0" points="46.6,38.2 46.6,46.8 31.6,46.8 	"/>
+	<linearGradient id="XMLID_30_" gradientUnits="userSpaceOnUse" x1="25" y1="49.1829" x2="25" y2="0.8171">
+		<stop  offset="0" style="stop-color:#00EAE9;stop-opacity:0.5"/>
+		<stop  offset="1" style="stop-color:#00D1E9;stop-opacity:0.2"/>
+	</linearGradient>
+	<rect id="XMLID_9359_" x="0.8" y="0.8" class="flow_button_st1" width="48.4" height="48.4"/>
+	<rect id="XMLID_9358_" x="0.8" y="0.8" class="flow_button_st2" width="48.4" height="48.4"/>
+	<g id="XMLID_9356_">
+		<polygon id="XMLID_5_" class="flow_button_st0" points="28.9,36.8 18,24.1 28.9,13.1 31.1,15.3 22.1,24.3 31.1,34.8"/>
+	</g>
+</g>
+</svg>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 156 42" style="enable-background:new 0 0 156 42;" xml:space="preserve">
+<style type="text/css">
+	.switchPC_frame_st0{fill:#1561C0;}
+	.switchPC_frame_st1{fill:none;stroke:#1776DD;stroke-miterlimit:10;}
+	.switchPC_frame_st2{fill:none;stroke:#00BEFF;stroke-width:2;stroke-miterlimit:10;}
+</style>
+<g id="XMLID_1_">
+	<polygon id="XMLID_12679_" class="switchPC_frame_st0" points="78,39.9 6.2,39.8 1.8,35.3 1.8,6.6 6.2,2.1 78,2.1 	"/>
+	<polygon id="XMLID_98_" class="switchPC_frame_st0" points="78,39.9 149.8,39.8 154.2,35.3 154.2,6.6 149.8,2.1 78,2.1 	"/>
+	<polygon id="XMLID_12680_" class="switchPC_frame_st1" points="149.8,39.8 6.2,39.8 1.8,35.3 1.8,6.7 6.2,2.2 149.8,2.2 154.2,6.7 154.2,35.3 	"/>
+	<g id="XMLID_12685_">
+		<polyline id="XMLID_12686_" class="switchPC_frame_st2" points="1.8,9.7 1.8,6.7 6.2,2.2 10.2,2.2 		"/>
+		<polyline id="XMLID_290_" class="switchPC_frame_st2" points="9.3,39.8 6.3,39.8 1.8,35.4 1.8,31.4 		"/>
+		<polyline id="XMLID_216_" class="switchPC_frame_st2" points="154.2,9.7 154.2,6.7 149.8,2.2 145.8,2.2 		"/>
+		<polyline id="XMLID_215_" class="switchPC_frame_st2" points="146.7,39.8 149.7,39.8 154.2,35.4 154.2,31.4 		"/>
+	</g>
+</g>
+</svg>

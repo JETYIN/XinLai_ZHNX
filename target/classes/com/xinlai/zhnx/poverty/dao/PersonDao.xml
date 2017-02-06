@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xinlai.zhnx.poverty.dao.PersonDao">
+
+	<select id="querypovertyinfoqu" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT
+				a.shiCode as areacode,
+				COUNT(DISTINCT(a.cunCode)) as village,
+				COUNT(DISTINCT(a.xianCode)) as country,
+				count(DISTINCT(a.id)) AS household,
+				COUNT(*) AS population
+			FROM
+				a01_tab1_01 a inner join a01_tab1_02 b USING(id)
+			GROUP BY a.shiCode;
+	</select>
+	
+	<select id="querypovertyinfoshi" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT
+				a.xianCode as areacode,
+				COUNT(DISTINCT(a.cunCode)) as village,
+				count(DISTINCT(a.id)) AS household,
+				COUNT(DISTINCT(a.xianCode)) as country,
+				COUNT(*) AS population
+			FROM
+				a01_tab1_01 a ,a01_tab1_02 b
+			WHERE
+				a.id = b.id and a.shiCode = #{areaid} GROUP BY xianCode;
+	</select>
+	
+		<select id="querypovertyinfoxian" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT
+				a.xiancode as areacode,
+				COUNT(DISTINCT(a.cunCode)) as village,
+				count(DISTINCT(a.id)) AS household,
+				COUNT(*) AS population
+			FROM
+				a01_tab1_01 a,a01_tab1_02 b
+			WHERE
+				a.id= b.id and a.xianCode = #{areaid} GROUP BY xianCode;
+	</select>
+	
+	<select id="querypovertyinfobarqu" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT
+				(select areaname from common_area where areaid = a.shiCode) as areaname,
+				a.shiCode as areacode,
+				COUNT(DISTINCT(a.cunCode)) as village,
+				COUNT(DISTINCT(a.xianCode)) as country,
+				count(DISTINCT(a.id)) AS household,
+				COUNT(*) AS population
+			FROM
+				a01_tab1_01 a,a01_tab1_02 b 
+			WHERE
+				a.id = b.id group by a.shiCode;
+	</select>
+	
+	<select id="querypovertyinfobarshi" parameterType="java.lang.String" resultType="java.util.Map">
+				SELECT
+				(select areaname from common_area where areaid = a.xianCode) as areaname,
+				a.xianCode as areacode,
+				COUNT(DISTINCT(a.cunCode)) as village,
+				count(DISTINCT(a.id)) AS household,
+				COUNT(DISTINCT(a.xianCode)) as country,
+				COUNT(*) AS population
+			FROM
+				a01_tab1_01 a,a01_tab1_02 b
+			where 
+				a.id = b.id and a.shiCode = #{areaid} group by a.xianCode;
+	</select>
+	
+	<select id="querypovertyinfobarxian" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT
+				(select areaname from common_area where areaid = a.xiangCode) as areaname,
+				a.xiangCode as areacode,
+				COUNT(DISTINCT(a.cunCode)) as village,
+				count(DISTINCT(a.id)) AS household,
+				COUNT(*) AS population
+			FROM
+				a01_tab1_01 a,a01_tab1_02 b 
+			where 
+				a.id = b.id and a.xianCode = #{areaid} group by a.xiangCode;
+	</select>
+	
+	<select id="querypovertyinfobarxiang" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT
+				(select areaname from common_area where areaid = a.cunCode) as areaname,
+				a.cunCode as areacode,
+				COUNT(DISTINCT(a.cunCode)) as village,
+				count(DISTINCT(a.id)) AS household,
+				COUNT(*) AS population
+			FROM
+				a01_tab1_01 a,a01_tab1_02 b
+			where 
+				a.id = b.id and a.xiangCode = #{areaid} group by a.cunCode;
+	</select>
+
+	<select id="querypovertyinfosumqu" parameterType="java.lang.String" resultType="java.util.Map">
+			<!--SELECT
+				'640000000000' as areacode,
+				COUNT(DISTINCT(a.cunCode)) as village,
+				COUNT(DISTINCT(a.xianCode)) as country,
+				count(DISTINCT(a.id)) AS household,
+				COUNT(*) AS population,
+				count(if(b.a8='回族',true,null)) as population_hui
+			FROM
+				a01_tab1_01 a inner join a01_tab1_02 b on a.id = b.id;-->
+				
+				select * from (
+					select '640000000000' as areacode,
+					COUNT(DISTINCT(cunCode)) as village,
+					COUNT(DISTINCT(xianCode)) as country,
+					COUNT(id) AS household
+					from a01_tab1_01
+				) as r1 join (
+					select
+					COUNT(*) AS population,
+					COUNT(if(a8='回族',true,null )) as population_hui
+					from a01_tab1_02
+				) as r2;
+	</select>
+	
+	<select id="querypovertyinfosumshi" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT
+				a.shiCode as areacode,
+				COUNT(DISTINCT(a.cunCode)) as village,
+				COUNT(DISTINCT(a.xianCode)) as country,
+				count(DISTINCT(a.id)) AS household,
+				COUNT(*) AS population,
+				count(if(b.a8='回族',true,null )) as population_hui
+			FROM
+				a01_tab1_01 a inner join a01_tab1_02 b on a.id = b.id and a.shiCode = #{areaid};
+				<!--select * from (
+					select #{areaid} as areacode,
+					COUNT(DISTINCT(cunCode)) as village,
+					COUNT(DISTINCT(xianCode)) as country,
+					COUNT(id) AS household
+					from a01_tab1_01 where shiCode=#{areaid}
+				) as r1 join (
+					select
+					COUNT(*) AS population,
+					COUNT(if(a8='回族',true,null )) as population_hui
+					from a01_tab1_01 a inner join a01_tab1_02 b on a.id = b.id and a.shiCode = #{areaid}
+				) as r2;  -->
+	</select>
+	
+		<select id="querypovertyinfosumxian" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT
+				a.xianCode as areacode,
+				COUNT(DISTINCT(a.cunCode)) as village,
+				COUNT(DISTINCT(a.xianCode)) as country,
+				count(DISTINCT(a.id)) AS household,
+				COUNT(*) AS population,
+				count(if(b.a8='回族',true,null )) as population_hui
+			FROM
+				a01_tab1_01 a,a01_tab1_02 b where a.id = b.id and a.xianCode = #{areaid};
+	</select>
+	
+	<select id="querypovertyreasonsumqu" parameterType="java.lang.String" resultType="java.util.Map">
+			select a3 as reason,COUNT(1) as total from a01_tab1_01 where a3 != '' group by a3
+	</select>
+	
+	<select id="querypovertyreasonsumshi" parameterType="java.lang.String" resultType="java.util.Map">
+			select a3 as reason,COUNT(1) as total from a01_tab1_01 where shiCode = #{areaid} and a3 != ''group by a3
+	</select>
+	
+	<select id="querypovertyreasonsumxian" parameterType="java.lang.String" resultType="java.util.Map">
+			select a3 as reason,COUNT(1) as total from a01_tab1_01 where xianCode = #{areaid} and a3 != '' group by a3
+	</select>
+	
+	<select id="querypovertyreasonqu" parameterType="java.lang.String" resultType="java.util.Map">
+			select a3 as reason,shiCode as areacode,COUNT(1) as total from a01_tab1_01 where a3 != '' group by a3,shiCode
+	</select>
+	
+	<select id="querypovertyreasonshi" parameterType="java.lang.String" resultType="java.util.Map">
+			select a3 as reason,xianCode as areacode,COUNT(1) as total from a01_tab1_01 where shiCode = #{areaid}  and a3 != '' group by a3,xianCode
+	</select>
+	
+	<select id="querypovertyreasonxian" parameterType="java.lang.String" resultType="java.util.Map">
+			select a3 as reason,xianCode as areacode,COUNT(1) as total from a01_tab1_01 where xianCode = #{areaid} and a3 != '' group by a3,xianCode
+	</select>
+	
+	<select id="querypovertyreasonbarqu" parameterType="java.lang.String" resultType="java.util.Map">
+			select a.a3 as reason,
+				(select areaname from common_area where areaid = a.shiCode) as areaname,
+				a.shiCode as areacode,
+				COUNT(1) as total from a01_tab1_01 a  where a.a3 != '' group by a.a3,a.shiCode
+	</select>
+	
+	<select id="querypovertyreasonbarshi" parameterType="java.lang.String" resultType="java.util.Map">
+			select a.a3 as reason,
+				(select areaname from common_area where areaid = a.xianCode) as areaname,
+				a.xianCode as areacode,
+				COUNT(1) as total from a01_tab1_01 a where a.shiCode = #{areaid} and a.a3 != '' group by a.a3,a.xianCode
+	</select>
+	
+	<select id="querypovertyreasonbarxian" parameterType="java.lang.String" resultType="java.util.Map">
+			select a.a3 as reason,
+				(select areaname from common_area where areaid = a.xiangCode) as areaname,
+				a.xiangCode as areacode,
+				COUNT(1) as total from a01_tab1_01 a where a.xianCode = #{areaid} and a.a3 != '' group by a.a3,a.xiangCode
+	</select>
+	
+		<select id="querypovertyreasonbarxiang" parameterType="java.lang.String" resultType="java.util.Map">
+			select a.a3 as reason,
+				(select areaname from common_area where areaid = a.cunCode) as areaname,
+				a.cunCode as areacode,
+				COUNT(1) as total from a01_tab1_01 a where a.xiangCode = #{areaid} and a.a3 != '' group by a.a3,a.cunCode
+	</select>
+</mapper>

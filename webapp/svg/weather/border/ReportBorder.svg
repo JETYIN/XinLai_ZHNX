@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 960 560" style="enable-background:new 0 0 960 560;" xml:space="preserve">
+<style type="text/css">
+	.weatherRT0{fill:none;stroke:#00BEFF;stroke-miterlimit:10;}
+	.weatherRT1{fill:none;stroke:#00BEFF;stroke-width:2;stroke-miterlimit:10;}
+	.weatherRT2{fill:none;stroke:#009FE8;stroke-miterlimit:10;}
+	.weatherRT3{fill:none;stroke:#00BEFF;stroke-width:3;stroke-miterlimit:10;}
+	.weatherRT4{fill:none;stroke:#1561C0;stroke-miterlimit:10;}
+	.weatherRT5{fill:#00BEFF;}
+</style>
+<g id="XMLID_1_">
+	<line id="XMLID_3287_" class="weatherRT0" x1="153.8" y1="64.1" x2="153.8" y2="288.1"/>
+	<g id="XMLID_372_">
+		<line id="XMLID_503_" class="weatherRT1" x1="153.7" y1="64.1" x2="153.7" y2="74.3"/>
+		<line id="XMLID_504_" class="weatherRT1" x1="153.7" y1="277.9" x2="153.7" y2="288.1"/>
+	</g>
+	<g id="XMLID_505_">
+		<line id="XMLID_3283_" class="weatherRT0" x1="285.8" y1="64.1" x2="285.8" y2="288.1"/>
+		<g id="XMLID_1625_">
+			<line id="XMLID_1633_" class="weatherRT1" x1="285.8" y1="64.1" x2="285.8" y2="74.3"/>
+			<line id="XMLID_1879_" class="weatherRT1" x1="285.8" y1="277.9" x2="285.8" y2="288.1"/>
+		</g>
+	</g>
+	<g id="XMLID_325_">
+		<line id="XMLID_331_" class="weatherRT0" x1="49.2" y1="317.6" x2="919.7" y2="317.6"/>
+		<g id="XMLID_327_">
+			<line id="XMLID_330_" class="weatherRT1" x1="49.2" y1="317.6" x2="59.4" y2="317.6"/>
+			<line id="XMLID_328_" class="weatherRT1" x1="909.6" y1="317.6" x2="919.7" y2="317.6"/>
+		</g>
+	</g>
+	<g id="XMLID_3991_">
+		<line id="XMLID_3158_" class="weatherRT0" x1="417.7" y1="64.1" x2="417.7" y2="288.1"/>
+		<g id="XMLID_1896_">
+			<line id="XMLID_1897_" class="weatherRT1" x1="417.7" y1="64.1" x2="417.7" y2="74.3"/>
+			<line id="XMLID_1898_" class="weatherRT1" x1="417.7" y1="277.9" x2="417.7" y2="288.1"/>
+		</g>
+	</g>
+	<g id="XMLID_3992_">
+		<line id="XMLID_2846_" class="weatherRT0" x1="549.7" y1="64.1" x2="549.7" y2="288.1"/>
+		<g id="XMLID_1899_">
+			<line id="XMLID_3409_" class="weatherRT1" x1="549.7" y1="64.1" x2="549.7" y2="74.3"/>
+			<line id="XMLID_3407_" class="weatherRT1" x1="549.7" y1="277.9" x2="549.7" y2="288.1"/>
+		</g>
+	</g>
+	<g id="XMLID_3993_">
+		<line id="XMLID_2845_" class="weatherRT0" x1="681.7" y1="64.1" x2="681.7" y2="288.1"/>
+		<g id="XMLID_3978_">
+			<line id="XMLID_3980_" class="weatherRT1" x1="681.7" y1="64.1" x2="681.7" y2="74.3"/>
+			<line id="XMLID_3979_" class="weatherRT1" x1="681.7" y1="277.9" x2="681.7" y2="288.1"/>
+		</g>
+	</g>
+	<g id="XMLID_3994_">
+		<line id="XMLID_2844_" class="weatherRT0" x1="813.6" y1="64.1" x2="813.6" y2="288.1"/>
+		<g id="XMLID_3983_">
+			<line id="XMLID_3985_" class="weatherRT1" x1="813.6" y1="64.1" x2="813.6" y2="74.3"/>
+			<line id="XMLID_3984_" class="weatherRT1" x1="813.6" y1="277.9" x2="813.6" y2="288.1"/>
+		</g>
+	</g>
+	<g id="XMLID_3478_">
+		<polyline id="XMLID_29846_" class="weatherRT2" points="954,45 921.9,20.2 887.8,20.2 		"/>
+		<g id="XMLID_2379_">
+			<polyline id="XMLID_29850_" class="weatherRT3" points="956,497.8 956,520.8 922.1,550.9 835.1,550.9 			"/>
+			<polygon id="XMLID_29848_" class="weatherRT4" points="21.8,42 50.9,14.9 242.9,14.9 269.7,36.9 912.4,36.9 945.6,61.4 945.6,516.6 
+				917.7,541.9 49.6,541.9 21.8,516.6 			"/>
+			<polyline id="XMLID_29847_" class="weatherRT2" points="4,503.6 4,525.4 28.6,549.1 			"/>
+			<polyline id="XMLID_29845_" class="weatherRT3" points="11.8,102.6 12.4,35.4 43.4,6.1 243.2,6.1 257.6,18 			"/>
+			<polyline id="XMLID_13777_" class="weatherRT3" points="274,28 917.5,28 948.7,52 			"/>
+			<polygon id="XMLID_13767_" class="weatherRT5" points="69.5,36 66.5,36 59.8,20.6 62.8,20.6 			"/>
+			<polygon id="XMLID_13726_" class="weatherRT5" points="76.9,36 73.9,36 67.2,20.6 70.2,20.6 			"/>
+			<polygon id="XMLID_13054_" class="weatherRT5" points="84.3,36 81.3,36 74.6,20.6 77.6,20.6 			"/>
+			<polygon id="XMLID_13018_" class="weatherRT5" points="91.7,36 88.7,36 82,20.6 85,20.6 			"/>
+			<polygon id="XMLID_12959_" class="weatherRT5" points="99.1,36 96.1,36 89.4,20.6 92.4,20.6 			"/>
+			<polygon id="XMLID_12922_" class="weatherRT5" points="106.5,36 103.5,36 96.8,20.6 99.8,20.6 			"/>
+			<polygon id="XMLID_12917_" class="weatherRT5" points="113.9,36 110.9,36 104.2,20.6 107.2,20.6 			"/>
+			<polygon id="XMLID_5855_" class="weatherRT5" points="121.2,36 118.2,36 111.6,20.6 114.6,20.6 			"/>
+			<polygon id="XMLID_4079_" class="weatherRT5" points="128.6,36 125.6,36 119,20.6 122,20.6 			"/>
+			<polygon id="XMLID_3988_" class="weatherRT5" points="136,36 133,36 126.4,20.6 129.4,20.6 			"/>
+			<polygon id="XMLID_3987_" class="weatherRT5" points="143.4,36 140.4,36 133.8,20.6 136.8,20.6 			"/>
+			<polygon id="XMLID_3976_" class="weatherRT5" points="150.8,36 147.8,36 141.2,20.6 144.2,20.6 			"/>
+			<polygon id="XMLID_3761_" class="weatherRT5" points="158.2,36 155.2,36 148.6,20.6 151.6,20.6 			"/>
+			<polygon id="XMLID_3760_" class="weatherRT5" points="165.6,36 162.6,36 156,20.6 159,20.6 			"/>
+			<polygon id="XMLID_3759_" class="weatherRT5" points="173,36 170,36 163.4,20.6 166.4,20.6 			"/>
+			<polygon id="XMLID_3758_" class="weatherRT5" points="187.8,36 184.8,36 178.2,20.6 181.2,20.6 			"/>
+			<polygon id="XMLID_3757_" class="weatherRT5" points="180.4,36 177.4,36 170.8,20.6 173.8,20.6 			"/>
+			<polygon id="XMLID_3628_" class="weatherRT5" points="195.2,36 192.2,36 185.5,20.6 188.5,20.6 			"/>
+			<polygon id="XMLID_3541_" class="weatherRT5" points="202.6,36 199.6,36 192.9,20.6 195.9,20.6 			"/>
+			<polygon id="XMLID_3540_" class="weatherRT5" points="210,36 207,36 200.3,20.6 203.3,20.6 			"/>
+			<polygon id="XMLID_3539_" class="weatherRT5" points="217.4,36 214.4,36 207.7,20.6 210.7,20.6 			"/>
+			<polygon id="XMLID_3282_" class="weatherRT5" points="224.8,36 221.8,36 215.1,20.6 218.1,20.6 			"/>
+			<polygon id="XMLID_2782_" class="weatherRT5" points="232.2,36 229.2,36 222.5,20.6 225.5,20.6 			"/>
+			<polygon id="XMLID_2432_" class="weatherRT5" points="239.6,36 236.6,36 229.9,20.6 232.9,20.6 			"/>
+			<polyline id="XMLID_2383_" class="weatherRT3" points="280.2,553.9 45.7,553.9 11.8,521.7 11.8,506.2 			"/>
+		</g>
+	</g>
+	<g id="XMLID_29871_">
+		<line id="XMLID_29875_" class="weatherRT4" x1="584.2" y1="355.9" x2="584.2" y2="494.3"/>
+		<path id="XMLID_29874_" class="weatherRT4" d="M594.2,351.6"/>
+		<polyline id="XMLID_29873_" class="weatherRT1" points="596.3,351.6 588.3,351.6 584.2,355.7 584.2,364.7 		"/>
+		<polyline id="XMLID_29872_" class="weatherRT1" points="596.3,498.2 588.3,498.2 584.2,494.1 584.2,483.9 		"/>
+	</g>
+	<g id="XMLID_29861_">
+		<line id="XMLID_29865_" class="weatherRT4" x1="863.8" y1="358" x2="863.8" y2="494.3"/>
+		<path id="XMLID_29864_" class="weatherRT4" d="M853.8,353.7"/>
+		<polyline id="XMLID_29863_" class="weatherRT1" points="851.7,353.7 859.7,353.7 863.8,357.8 863.8,366.7 		"/>
+		<polyline id="XMLID_29862_" class="weatherRT1" points="851.7,498.2 859.7,498.2 863.8,494.2 863.8,484 		"/>
+	</g>
+</g>
+</svg>

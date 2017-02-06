@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xinlai.zhnx.poverty.dao.EffectDao">
+
+	<select id="queryShiErWuAntPovertyBar" parameterType="java.lang.String" resultType="java.util.Map">
+		    SELECT areaname,category,year,numericalvalue from tpcx_sewtpcx where category = #{category};
+	</select>
+	
+	<select id="queryShiErWuAntPoverty" parameterType="java.lang.String" resultType="java.util.Map">
+		    	SELECT
+					areaname,
+					areaid,
+					category,
+					numericalvalue
+				FROM
+					tpcx_sewtpcx
+				WHERE
+					year = '2015'
+				AND
+					areaid != '640000000000';
+	</select>
+	
+	<select id="queryXHGEconomicBar" parameterType="java.lang.String" resultType="java.util.Map">
+			select areaname,category,year,numericalvalue from tpcx_xhgdqjjtj where category = #{category};
+	</select>
+	<select id="queryXHGEconomic" parameterType="java.lang.String" resultType="java.util.Map">
+		    	SELECT
+					areaname,
+					areaid,
+					category,
+					numericalvalue
+				FROM
+					tpcx_xhgdqjjtj
+				WHERE
+					year = '2014'
+				AND
+					areaid != '640000000000';
+	</select>
+	
+	<select id="queryXHGPopulationBar" parameterType="java.lang.String" resultType="java.util.Map">
+			select category,year,numericalvalue from tpcx_xhgdqrktj where category = #{category};
+	</select>
+	
+	<select id="queryXHGPopulation" parameterType="java.lang.String" resultType="java.util.Map">
+		    	SELECT
+		    		areaid,
+					category,
+					numericalvalue
+				FROM
+					tpcx_xhgdqrktj
+				WHERE
+					year = '2014';
+	</select>
+	
+	<select id="queryMigrantWorkersLinequ" parameterType="java.lang.String" resultType="java.util.Map">
+				SELECT
+					a13 as category,
+					COUNT(a13) as sl
+				FROM
+					a01_tab1_02 a,
+					a01_tab1_01 b
+				WHERE a.id = b.id
+				AND a.a13 != ''
+				GROUP BY
+					a.a13;
+	</select>
+	<select id="queryMigrantWorkersLineshi" parameterType="java.lang.String" resultType="java.util.Map">
+				SELECT
+					a13 as category,
+					COUNT(a13) as sl
+				FROM
+					a01_tab1_02 a,
+					a01_tab1_01 b
+				WHERE a.id = b.id
+				AND a.a13 != ''
+				AND b.shiCode = #{areaid}
+				GROUP BY
+					a.a13;
+	</select>
+	<select id="queryMigrantWorkersLinexian" parameterType="java.lang.String" resultType="java.util.Map">
+				SELECT
+					a13 as category,
+					COUNT(a13) as sl
+				FROM
+					a01_tab1_02 a,
+					a01_tab1_01 b
+				WHERE a.id = b.id
+				AND a.a13 != ''
+				AND b.xianCode = #{areaid}
+				GROUP BY
+					a.a13;
+	</select>
+	
+	<select id="queryMigrantWorkersBarqu" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT
+				c.areaid as areaid,
+				c.areaname as areaname,
+				a13 as category,
+				COUNT(a13) as sl
+			FROM
+				a01_tab1_02 a,
+				a01_tab1_01 b,
+				common_area c
+			WHERE a.id = b.id
+			AND b.shiCode = c.areaid
+			AND a.a13 != ''
+			GROUP BY
+				a.a13,
+				c.areaid;
+	</select>
+	<select id="queryMigrantWorkersBarshi" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT
+				c.areaid as areaid,
+				c.areaname as areaname,
+				a13 as category,
+				COUNT(a13) as sl
+			FROM
+				a01_tab1_02 a,
+				a01_tab1_01 b,
+				common_area c
+			WHERE a.id = b.id
+			AND b.xianCode = c.areaid
+			AND a.a13 != ''
+			AND b.shiCode = #{areaid}
+			GROUP BY
+				a.a13,
+				c.areaid;
+	</select>
+	<select id="queryMigrantWorkersBarxian" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT
+				c.areaid as areaid,
+				c.areaname as areaname,
+				a13 as category,
+				COUNT(a13) as sl
+			FROM
+				a01_tab1_02 a,
+				a01_tab1_01 b,
+				common_area c
+			WHERE a.id = b.id
+			AND b.xianCode = c.areaid
+			AND a.a13 != ''
+			AND b.xianCode = #{areaid}
+			GROUP BY
+				a.a13,
+				c.areaid;
+	</select>
+	<select id="queryOtherHelpSum" parameterType="java.lang.String" resultType="java.util.Map">
+			select * from tpcx_sewqtbftpcx WHERE areaid = '640000000000';
+	</select>
+	<select id="queryOtherHelpBar" parameterType="java.lang.String" resultType="java.util.Map">
+			select * from tpcx_sewqtbftpcx WHERE areaid != '640000000000';
+	</select>
+	<select id="queryPreciseSum" parameterType="java.lang.String" resultType="java.util.Map">
+			select * from tpcx_sewjzfctpcx WHERE areaid = '640000000000';
+	</select>
+	<select id="queryPreciseBar" parameterType="java.lang.String" resultType="java.util.Map">
+			select * from tpcx_sewjzfctpcx WHERE areaid != '640000000000';
+	</select>
+	<select id="queryToFamilyBar0" parameterType="java.lang.String" resultType="java.util.Map">
+			select * from tpcx_sewdhcstpcx;
+	</select>
+	<select id="queryToFamilyBar1" parameterType="java.lang.String" resultType="java.util.Map">
+			select * from tpcx_sewdhcstpcx WHERE areaid != '640000000000';
+	</select>
+	<select id="queryMigrationBar" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT * from tpcx_sewymbq where category = #{category};
+	</select>
+	<select id="queryMigration" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT * from tpcx_sewymbq where areaid_old = #{areaid};
+	</select>
+</mapper>

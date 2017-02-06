@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xinlai.zhnx.education.dao.SchoolsDao">
+	<select id="getEduConstitute" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			SUM(a.PreschoolNum) as xqsl,
+			SUM(a.PrimarySecondarySchoolNum) as zxxsl,
+			SUM(a.VocationalEduSchoolNum)as zzsl
+		FROM
+			edu_schoolall a,
+			common_area b
+		WHERE
+			a.AreaCode = b.areaid
+		AND b.parentid = #{AreaCode}
+	</select>
+	
+	<select id="getDataAnaly" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			a.AreaName,
+			a.PreschoolNum as xqsl,
+			a.PrimarySecondarySchoolNum as zxxsl,
+			a.VocationalEduSchoolNum as zzsl
+		FROM
+			edu_schoolall a,common_area b 
+		WHERE a.AreaCode = b.areaid
+		AND b.parentid = #{areaCode}
+		ORDER BY a.AreaCode
+	</select>
+	
+	<select id="getprimarysecondschooltype_all" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			SUM(PrimarySchoolNum) as PrimarySchoolNum,
+			SUM(JuniorSchoolNum) as JuniorSchoolNum,
+			SUM(HighSchoolNum) as HighSchoolNum,
+			SUM(SpecialEducationSchoolNum) as SpecialEducationSchoolNum
+		FROM
+			edu_primarysecondschooltype
+	</select>
+	
+	<select id="getprimarysecondschooltype" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			PrimarySchoolNum,
+			JuniorSchoolNum,
+			HighSchoolNum,
+			SpecialEducationSchoolNum
+		FROM
+			edu_primarysecondschooltype
+		WHERE
+			AreaCode = #{areaCode}
+	</select>
+
+	<select id="getprimarysecondschoolsize_all" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			SUM(NumOfFanwei) as NumOfFanwei,fanwei
+		FROM
+			edu_primarysecondschoolsize
+		GROUP BY fanwei
+		ORDER BY substr(fanwei,1,position('-' in fanwei)-1)-0
+	</select>
+	
+	<select id="getprimarysecondschoolsize" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			NumOfFanwei,fanwei
+		FROM
+			edu_primarysecondschoolsize
+		WHERE
+			AreaCode = #{areaCode}
+	</select>
+	
+	<select id="getprimarysecondschoolclasssize_all" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT
+				SUM(a.NumOfClassSize) AS NumOfClassSize,
+				a.ClassSize AS ClassSize,
+				a.AreaName AS AreaName
+			FROM
+				edu_primarysecondschoolclasssize a,
+				common_area b
+			WHERE
+				1 = 1
+			AND a.AreaCode = b.areaid
+			AND b.parentid = '640000000000'
+			GROUP BY
+				ClassSize,
+				AreaName	
+	</select>
+	
+	<select id="getprimarysecondschoolclasssize" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			a.AreaName as AreaName,
+			a.ClassSize as ClassSize,
+			a.NumOfClassSize as NumOfClassSize
+		FROM
+			edu_primarysecondschoolclasssize a ,common_area b
+		WHERE 1=1
+		AND a.AreaCode = b.areaid
+		and b.parentid = #{areaCode}
+	</select>
+	
+	<select id="getprimarysecondschoolstage_all" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			SUM(a.NumOfStage) AS NumOfStage,
+			a.Stage AS Stage,
+			a.AreaName AS AreaName
+		FROM
+			edu_primarysecondschoolstage a,
+			common_area b
+		WHERE
+			1 = 1
+		AND a.AreaCode = b.areaid
+		AND b.parentid = '640000000000'
+		GROUP BY
+			Stage,
+			AreaName            		
+	</select>
+	
+	<select id="getprimarysecondschoolstage" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			a.AreaName as AreaName,
+			a.Stage as Stage,
+			a.NumOfStage as NumOfStage
+		FROM
+			edu_primarysecondschoolstage a ,common_area b
+		WHERE 1=1
+		AND a.AreaCode = b.areaid
+		and b.parentid = #{areaCode}
+	</select>
+	
+	<select id="getPreSchool" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			a.*
+		FROM
+			edu_preschoolschl a,common_area b
+		WHERE
+			a.AreaCode=b.areaid
+		AND
+			a.TagName = #{tagName}
+		AND
+			b.parentid = #{areaCode}
+		ORDER BY
+			a.Type,
+			a.AreaCode
+	</select>
+</mapper>

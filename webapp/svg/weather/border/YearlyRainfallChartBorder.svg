@@ -1,0 +1,47 @@
+<?xml version="1.0" ?><!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --><svg id="图层_1" style="enable-background:new 0 0 905 355;" version="1.1" viewBox="0 0 905 355" x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" y="0px" zn="全年降水折线图外框">
+<style type="text/css">
+	.YearlyRainfallChartBorder_st0{fill:#00BEFF;}
+	.YearlyRainfallChartBorder_st1{fill:none;stroke:#1561C0;stroke-width:5;stroke-miterlimit:10;}
+	.YearlyRainfallChartBorder_st2{fill:none;stroke:#1561C0;stroke-miterlimit:10;}
+	.YearlyRainfallChartBorder_st3{fill:#1561C0;fill-opacity:0.4;stroke:#1561C0;stroke-miterlimit:10;}
+</style>
+<g id="XMLID_1_">
+	<polygon class="YearlyRainfallChartBorder_st0" id="XMLID_25_" points="2,301.3 8.9,307.8 8.9,329.8 17.4,337.9 24.7,337.9 27.5,340.5 13,340.5 2,330.8  "/>
+	<polygon class="YearlyRainfallChartBorder_st0" id="XMLID_24_" points="94.6,347.5 34.7,347.5 26.4,339.5 101.7,339.4  "/>
+	<g>
+		<polygon class="YearlyRainfallChartBorder_st0" id="XMLID_23_" points="903,299.5 897.2,305.7 897.2,327.7 888.7,335.8 880,335.9 876.5,339.2 890.8,339.2     903,329.5   "/>
+		<polygon class="YearlyRainfallChartBorder_st0" id="XMLID_22_" points="809.5,346.1 869.4,346.1 877.6,338.1 802.5,338.1   "/>
+	</g>
+	<polygon class="YearlyRainfallChartBorder_st0" id="XMLID_21_" points="2,44 8.8,37.6 8.8,16.8 14.1,11.1 23.7,11.1 25.6,8.3 54.5,8.3 59.1,3.7 8.8,3.7    2,10.5  "/>
+	<polygon class="YearlyRainfallChartBorder_st0" id="XMLID_20_" points="903,78.9 895.5,72.6 895.5,51.8 890.2,46.1 880.6,46.1 878.7,43.3 849.8,43.3    845.2,38.1 895.2,38.1 903,45.3  "/>
+	<polyline class="YearlyRainfallChartBorder_st1" id="XMLID_19_" points="267.7,4.2 299.2,4.2 329.5,38.3 375.7,38.3  "/>
+	<g>
+		<g>
+			<circle class="YearlyRainfallChartBorder_st2" cx="716.4" cy="9.2" id="XMLID_18_" r="3.2"/>
+			<polyline class="YearlyRainfallChartBorder_st2" id="XMLID_17_" points="844,38.7 819.6,9.2 719.5,9.2    "/>
+		</g>
+		<g>
+			<circle class="YearlyRainfallChartBorder_st2" cx="746.8" cy="18.7" id="XMLID_16_" r="2.1"/>
+			<polyline class="YearlyRainfallChartBorder_st2" id="XMLID_15_" points="833.4,38.7 816.8,18.7 748.9,18.7    "/>
+		</g>
+		<g>
+			<polyline class="YearlyRainfallChartBorder_st2" id="XMLID_14_" points="820.7,38.1 811.7,27.2 774.7,27.2    "/>
+			<circle class="YearlyRainfallChartBorder_st2" cx="773.6" cy="27.2" id="XMLID_13_" r="1.2"/>
+		</g>
+	</g>
+	<g>
+		<circle class="YearlyRainfallChartBorder_st2" cx="249.6" cy="348.2" id="XMLID_12_" r="3.2"/>
+		<polyline class="YearlyRainfallChartBorder_st2" id="XMLID_11_" points="138.6,339.8 146.5,348.2 246.6,348.2   "/>
+	</g>
+	<g>
+		<circle class="YearlyRainfallChartBorder_st2" cx="676.3" cy="349" id="XMLID_10_" r="2.1"/>
+		<polyline class="YearlyRainfallChartBorder_st2" id="XMLID_6_" points="756.9,339 746.3,349 678.4,349   "/>
+	</g>
+	<g>
+		<polyline class="YearlyRainfallChartBorder_st2" id="XMLID_5_" points="744.2,339 740.2,342.4 703.2,342.4   "/>
+		<circle class="YearlyRainfallChartBorder_st2" cx="702" cy="342.4" id="XMLID_4_" r="1.2"/>
+	</g>
+	<polygon class="YearlyRainfallChartBorder_st3" id="XMLID_3_" points="12.1,19.9 16,14.7 25.7,14.7 28.1,11.4 55.6,11.4 59.2,7.8 261.7,7.5 267.8,11.1    295,10.9 310.1,27.3 310.6,41.4 12.6,41.4  "/>
+	<polygon class="YearlyRainfallChartBorder_st2" id="XMLID_2_" points="890.6,338.7 13.2,340 2.5,330.6 2.5,10.5 8.8,4.2 299.2,4.2 329.6,38.7 895,38.7    902.5,45.5 902.5,329.2  "/>
+</g>
+</svg>

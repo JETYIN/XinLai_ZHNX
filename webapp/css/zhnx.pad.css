@@ -1,0 +1,626 @@
+* {
+	margin: 0;
+	padding: 0
+}
+
+body {
+	width: 2736px;
+	height: 1824px;
+	font-size: 12px;
+	background: url('../images/bg_pad.jpg') no-repeat;
+	/*
+    overflow : hidden;
+    */
+}
+
+.widget {
+	background: rgba(0, 0, 0, 0);
+	border: solid rgba(10, 74, 115, 0.8) 0px;
+	float: left;
+}
+
+.widget .widget-head {
+	background: rgba(10, 74, 115, 0.8);
+	width: inherit;
+}
+
+.widget .widget-head .widget-title {
+	color: #fff;
+	font-size: 12px;
+	padding-left: 5px;
+	line-height: 25px;
+}
+
+.widget .widget-zoom-in {
+	background: url('../images/zoom-in.png') no-repeat;
+	margin: 4px 5px 0px 0px;
+	float: right;
+	cursor: pointer;
+	width: 15px;
+	height: 15px;
+}
+
+.widget .widget-zoom-out {
+	background: url('../images/zoom-out.png') no-repeat;
+	margin: 4px 5px 0px 0px;
+	float: right;
+	cursor: pointer;
+	width: 15px;
+	height: 15px;
+}
+
+.widget .widget-head .widget-collapse-up {
+	background: url('../images/up.png') no-repeat;
+	margin: 4px 5px 0px 0px;
+	float: right;
+	cursor: pointer;
+	width: 15px;
+	height: 15px;
+}
+
+.widget .widget-head .widget-collapse-down {
+	background: url('../images/down.png') no-repeat;
+	margin: 4px 5px 0px 0px;
+	float: right;
+	cursor: pointer;
+	width: 15px;
+	height: 15px;
+}
+
+.widget .widget-head .widget-remove {
+	background: url('../images/close.png') no-repeat;
+	margin: 4px 5px 0px 0px;
+	float: right;
+	cursor: pointer;
+	width: 15px;
+	height: 15px;
+}
+
+.widget .widget-content {
+	background: rgba(0, 0, 0, 0);
+	width: inherit;
+}
+
+#widgetPovertyMap {
+	padding-top: 100px;
+	position: absolute;
+	top: 120px;
+	left: 0px;
+}
+
+#widgetWeatherMap {
+	position: absolute;
+	padding-top: 100px;
+	top: 120px;
+	left: 0px;
+}
+
+@font-face {
+	font-family: KARNIVOL;
+	src: url(../font/KARNIVOL.ttf)
+}
+/*定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸*/
+.scrollbar::-webkit-scrollbar {
+	width: 16px;
+	height: auto;
+	background-color: rgba(3, 193, 252, 0.2);
+}
+/*定义滚动条的轨道，内阴影及圆角*/
+.scrollbar::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+	border-radius: 10px;
+}
+/*定义滑块，内阴影及圆角*/
+.scrollbar::-webkit-scrollbar-thumb {
+	/*width: 10px;*/
+	height: 20px;
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+	background-color: rgba(3, 193, 252, 0.7);;
+}
+
+#left {
+	width: 350px;
+	height: 1824px;
+	clear: both;
+}
+
+#logo {
+	position: absolute;
+	top: 132px;
+	left: 38px;
+}
+
+#top {
+	position: absolute;
+	left: 350px;
+	top: 0px;
+	width: 2386px;
+	height: 192px;
+}
+
+#center {
+	position: absolute;
+	left: 350px;
+	top: 192px;
+	width: 2386px;
+	height: 1632px;
+}
+/***************fupin****************/
+.main_with_map ul {
+	list-style: none;
+}
+
+.main_with_table ul {
+	padding-top: 32px;
+	padding-left: 0px;
+	list-style: none;
+}
+
+.big-title {
+	color: #FFF;
+	font-size: 64px;
+	font-family: Microsoft Yahei, 黑体, Helvetica Neue, Helvetica, Arial,
+		sans-serif !important;
+	line-height: 100px;
+	margin-bottom: 10px;
+}
+
+.main_with_map .list-title {
+	height: auto;
+	position: absolute;
+	z-index: 999;
+}
+
+.list-title li {
+	float: left;
+	width: auto;
+	color: rgba(255, 168, 1, 0.8);
+	font-size: 20px;
+	padding: 5px;
+	border: 1px solid #1a5caa;
+	margin-right: 13px;
+	margin-bottom: 20px;
+	line-height: 18px;
+	cursor: pointer;
+	font-family: Microsoft Yahei, 黑体, Helvetica Neue, Helvetica, Arial,
+		sans-serif !important;
+}
+
+.list-title li p {
+	padding: 10px;
+	margin-bottom: 0px;
+}
+
+.active p, .menuActive p {
+	width: auto;
+	height: auto;
+	background: rgba(48, 125, 193, 0.3);
+	line-height: 18px;
+	display: block;
+	padding: 10px;
+}
+
+.fpZhenduanSelect {
+	font-size: 25px;
+	border: none;
+	background-color: rgba(0, 0, 0, 0);
+	width: 341px;
+	height: 32px;
+	color: rgba(255, 168, 1, 0.8);
+	font-family: Microsoft Yahei;
+}
+
+#areaList {
+	position: absolute;
+	width: 386px;
+	height: 343px;
+	background-color: rgba(14, 71, 142, 0.3);
+	padding-top: 30px;
+	padding-bottom: 30px;
+	overflow-x: hidden;
+}
+
+#areaList div {
+	line-height: 45px;
+	color: #FFF;
+	font-size: 24px;
+	padding-left: 80px;
+	font-family: Microsoft Yahei;
+	cursor: pointer;
+}
+
+.fpZhenduanTable {
+	margin: 20px 120px 20px 120px;
+}
+
+.fpZhenduanTable h4 {
+	padding-left: 50px;
+	font-size: 28px;
+	color: #FFF;
+}
+
+.fpZhenduanTable select, .fpZhenduanTable>select>option {
+	text-aline: center;
+	padding-left: 43%;
+	font-size: 28px;
+	color: #FFA801;
+	width: 100%;
+	background-color: transparent;
+	outline: none;
+	border: none;
+}
+
+.fpZhenduanTable>div {
+	width: 100%;
+	height: 745px;
+	overflow-x: hidden;
+}
+
+.fpZhenduanTable table {
+	width: 100%;
+	color: #FFF;
+	font-size: 20px;
+	font-family: Microsoft Yahei;
+	border-right: 1px solid rgba(14, 71, 142, 1);
+	border-bottom: 1px solid rgba(14, 71, 142, 1);
+}
+
+.fpZhenduanTable tr {
+	height: 40px;
+}
+
+.fpZhenduanTable td, .fpZhenduanTable th {
+	border-left: 1px solid rgba(14, 71, 142, 1);
+	border-top: 1px solid rgba(14, 71, 142, 1);
+}
+
+.fpZhenduanTable tr td {
+	width: 198px;
+	text-align: center;
+}
+
+.fpZhenduanTable tr td:FIRST-CHILD {
+	padding-left: 55px;
+	width: 280px;
+	text-align: left;
+}
+
+.fpZhenduanTable .childTd {
+	padding-left: 75px;
+}
+
+.fpZhenduanTable .deleteTd {
+	background: url('../images/close.png') no-repeat;
+	width: 15px;
+	height: 15px;
+	float: right;
+}
+
+.fpZhenduanTable img {
+	border: none;
+}
+
+.fpZhenduanTable .close_box {
+	box-sizing: border-box;
+	width: 15px;
+	height: 15px;
+	border: 1px solid rgba(3, 193, 252, 0.9);
+	background: rgba(3, 193, 252, 0.3);
+	float: right;
+	margin-top: 6px;
+	margin-right: 11px;
+	cursor: pointer;
+}
+
+.fpZhenduanTable .close_box img {
+	width: 70%;
+	padding: 2px;
+	display: block;
+	vertical-align: middle;
+}
+
+#rightTable tr td:first-child { /* 右边表格样式第1列，其余使用fpZhenduanTable  */
+	text-align: center;
+	padding-left: 0;
+	width: 50px;
+}
+
+#rightTable tr td:nth-of-type(2) { /* 右边表格样式第2列  */
+	width: 120px;
+}
+
+#rightTable tr td { /* 右边表格鼠标移入样式  */
+	cursor: pointer;
+}
+
+.trColor { /* 右侧表格点击背景样式 */
+	background-color: rgba(9, 85, 163, .3);
+}
+
+.gNav { /* 整体情况鼠标移入样式 */
+	cursor: pointer;
+}
+
+.centerTable { /* 中间表格基本样式 */
+	margin-top: 35px;
+}
+
+.centerTable table { /* 基本情况*/
+	font-size: 16px;
+}
+
+.centerTable tr th { /* 基本情况第1行 */
+	font-size: 20px;
+	height: 65px;
+}
+
+.centerTable_basic tr { /* 基本情况行高 */
+	height: 50px;
+}
+
+.centerTable_basic tr td:first-child { /* 基本情况第1列 */
+	width: 60px;
+	padding-left: 0;
+	text-align: center;
+}
+
+.centerTable_basic tr td:nth-of-type(2) { /* 基本情况第2、3列 */
+	width: 80px;
+}
+
+.centerTable_basic tr td:nth-of-type(3) { /* 基本情况第3列 */
+	width: 70px;
+}
+
+.centerTable_basic tr td:nth-of-type(4) { /* 基本情况第4列 */
+	width: 250px;
+}
+
+.centerTable_basic tr td:nth-of-type(5), .centerTable_basic tr td:nth-of-type(10)
+	{ /* 基本情况第5、10列 */
+	width: 120px;
+}
+
+.centerTable_basic tr td:nth-of-type(6) { /* 基本情况第6列 */
+	width: 70px;
+}
+
+.centerTable_basic tr td:nth-of-type(7), .centerTable_basic tr td:nth-of-type(9),
+	.centerTable_basic tr td:nth-of-type(12), .centerTable_basic tr td:nth-of-type(13)
+	{ /* 基本情况第7、9、12、13列 */
+	width: 105px;
+}
+
+.centerTable_basic tr td:nth-of-type(8) { /* 基本情况第8列 */
+	width: 130px;
+}
+
+.centerTable_basic tr td:nth-of-type(11) { /* 基本情况第11列 */
+	width: 110px;
+}
+
+.centerTable_basic tr td:nth-of-type(14) { /* 基本情况第14列 */
+	width: 90px;
+}
+
+.centerTable_basic tr td:nth-of-type(15) { /* 基本情况第15列 */
+	width: 140px;
+}
+
+.centerTable_basic tr td:nth-of-type(16), .centerTable_basic tr td:nth-of-type(17)
+	{ /* 基本情况第16、17列 */
+	width: 145px;
+}
+
+.centerTable_basic tr td:nth-of-type(18) {
+	width: 160px;
+}
+
+.centerTable_Photo { /* 家庭照片 */
+	/* position: relative;
+	z-index:2 */
+	/* float: left */
+	margin-top: 0;
+	position: absolute;
+}
+
+.centerTable_Photo tr td:first-child, .centerTable_Photo tr td {
+	/* 家庭照片第1列 */
+	width: 25%;
+}
+
+.centerTable_Photo tr:nth-of-type(2) { /* 家庭照片第2行 */
+	height: 650px;
+}
+
+.centerTable_Photo tr:nth-of-type(2) ul { /* 家庭照片img */
+	list-style: none;
+	width: 100%;
+	height: 100%;
+	padding-top: 20px;
+	padding-left: 20px;
+	margin: 0;
+}
+
+.centerTable_Photo tr:nth-of-type(2) ul li {
+	list-style: none;
+	margin: 0;
+	width: 12.5%;
+	height: 25%;
+	padding-left: 10px;
+	padding-bottom: 10px;
+	float: left;
+}
+
+.centerTable_Photo tr:nth-of-type(2) ul li img {
+	font-size: 0;
+	width: 100%;
+	height: 30%;
+}
+
+.centerTable_Photo>table>tbody {
+	vertical-align: text-top;
+	text-aline: center;
+}
+
+.fpZhenduanTable>#centerTable_Photo tr td:FIRST-CHILD {
+	padding-left: 100px;
+}
+
+#bigImg { /* 点击放大照片 */
+	width: 100%;
+	height: 600px;
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+	top: 13%;
+	font-size: 0;
+}
+
+#bigImg img:first-child {
+	width: 50%;
+	padding-left: 25%;
+	height: 100%;
+	margin: 0;
+	font-size: 0;
+}
+
+.toCloseClick, .toLeftClick, .toRightClick {
+	width: 65px;
+	height: 65px;
+	border-radius: 65px;
+	position: relative;
+	cursor: pointer;
+}
+
+.toCloseClick {
+	bottom: 90%;
+	right: 9%;
+	width: 45px;
+	height: 45px;
+}
+
+.toLeftClick, .toRightClick {
+	bottom: 45%;
+}
+
+.toLeftClick {
+	right: 49%
+}
+
+.toRightClick {
+	right: 7.5%
+}
+
+.centerTable_Photo tr:nth-of-type(2) ul li:hover, .left:hover, .right:hover,
+	.close:hover {
+	cursor: pointer;
+}
+
+.centerTable_House tr td:first-child { /* 到户措施第1列 */
+	width: 520px;
+}
+
+.centerTable_many tr td, .centerTable_many tr td:first-child {
+	/* 基础设施\收支情况\产业发展与精准扶贫\金扶工程\能力提升\社会帮扶\易地搬迁\操作人员 */
+	width: 25%;
+}
+
+.centerTable_many tr {
+	height: 60px;
+}
+
+.centerTable_Helper tr td:first-child { /* 帮扶责任人第1列 */
+	padding-left: 0;
+}
+
+.centerTable_Helper tr td, .centerTable_Helper tr td:first-child {
+	/* 帮扶责任人 */
+	width: 12.5%;
+}
+
+.centerTable_Production tr td:first-child, .centerTable_Production tr td:nth-of-type(4)
+	{ /* 生产经营现状1、4列 */
+	width: 25%;
+}
+
+.centerTable_Production tr td:nth-of-type(2), .centerTable_Production tr td:nth-of-type(6)
+	{ /* 生产经营现状2、6列 */
+	width: 8%;
+}
+
+.centerTable_Production tr {
+	height: 58px;
+}
+
+.centerTable_fp tr td { /* 产业发展与精准扶贫2-4\6-8列 */
+	width: 7.1%;
+}
+
+.centerTable_fp tr td:first-child, .centerTable_fp tr td:nth-of-type(5)
+	{ /* 产业发展与精准扶贫1\5列 */
+	width: 25%;
+}
+
+.centerTable_Poverty tr td:first-child, .centerTable_Poverty tr td:nth-of-type(3)
+	{ /* 脱贫成效1\3列 */
+	width: 27%;
+}
+
+#returnBtn {
+	position: absolute;
+	left: 2125px;
+	top: 37px;
+	cursor: pointer;
+	color: #FFF;
+}
+
+/*登陆页面*/
+.loginPadBg {
+	width: 2736px;
+	height: 1824px;
+	background: #fff url(../images/bg_pad_login.jpg) top left;
+}
+
+.account{
+	position: absolute;
+    top: 854px;
+    left: 1088px;
+    width: 564px;
+    height: 64px;
+    border:0px;
+    background:rgba(0, 0, 0, 0);
+    text-align:center;
+	color: #FFF;
+    font-size: 40px;
+}
+.password{
+    position: absolute;
+    top: 964px;
+    left: 1088px;
+    width: 564px;
+    height: 64px;
+    border:0px;
+    background:rgba(0, 0, 0, 0);
+    text-align:center;
+	color: #FFF;
+    font-size: 40px;
+}
+.submit{
+    position: absolute;
+    top: 1124px;
+    left: 1083px;
+    width: 562px;
+    height: 64px;
+    border:0px;
+    background:rgba(0, 0, 0, 0);
+	font-family: 黑体;
+    font-size: 44px;
+    color: #FFF;
+   	cursor: pointer;
+   	outline:none;
+}
+input{outline:none;}
+input::-ms-input-placeholder{text-align: center;} 
+input::-webkit-input-placeholder{text-align: center;} 

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="alert_frame" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 688 52" style="enable-background:new 0 0 688 52;" xml:space="preserve">
+<style type="text/css">
+	.alert_frame_st0{fill:#1561C0;fill-opacity:0.2;stroke:#1561C0;stroke-miterlimit:10;}
+	.alert_frame_st1{fill:#00BEFF;}
+</style>
+<g id="XMLID_156_">
+	<rect id="XMLID_15894_" x="1.5" y="1.2" class="alert_frame_st0" width="685" height="49.5"/>
+	<g id="XMLID_310_">
+		<g id="XMLID_15860_">
+			<polygon id="XMLID_15861_" class="alert_frame_st1" points="2.5,8.9 0.5,8.9 0.5,0.2 8.1,0.2 8.1,2.2 2.5,2.2 			"/>
+		</g>
+		<g id="XMLID_15819_">
+			<polygon id="XMLID_15859_" class="alert_frame_st1" points="8.1,51.8 0.5,51.8 0.5,43.1 2.5,43.1 2.5,49.8 8.1,49.8 			"/>
+		</g>
+	</g>
+	<g id="XMLID_2_">
+		<g id="XMLID_5_">
+			<polygon id="XMLID_6_" class="alert_frame_st1" points="685.5,8.9 687.5,8.9 687.5,0.2 679.9,0.2 679.9,2.2 685.5,2.2 			"/>
+		</g>
+		<g id="XMLID_3_">
+			<polygon id="XMLID_4_" class="alert_frame_st1" points="679.9,51.8 687.5,51.8 687.5,43.1 685.5,43.1 685.5,49.8 679.9,49.8 			"/>
+		</g>
+	</g>
+</g>
+</svg>

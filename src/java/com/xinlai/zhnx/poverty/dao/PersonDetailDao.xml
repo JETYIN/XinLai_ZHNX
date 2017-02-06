@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xinlai.zhnx.poverty.dao.PersonDetailDao">
+	<select id="querypersondetailbyvillage" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT
+				id as huid,
+				aad001 AS hzxm,
+				aac004 AS lxdh,
+				a2 AS pkhsx,
+				a3 AS zyzpyy,
+				'0' AS pkzddf
+			FROM
+				a01_tab1_01
+			where cunCode = #{areaid};
+	</select>
+	<select id="querysituationbyid" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT
+				DISTINCT a.id as huid,
+				a.aad001 as hzm,
+				a.a3b as tpxq,
+				c.A31a1 as yzqk,
+				c.A31a2 as zzqk,
+				c.A31f_1 as njjsl,
+				d.respon as bfzrr,
+				d.gbfdwmc as bfdw,
+			    a.a2 as pkhsx,
+				a.a3 as zpyy,
+				e.A33 as rjsr,
+				e.A34 as gzsr,
+			    e.A35 as scsr,
+				e.AN7 as scbt,
+				e.A36 as glbt,
+				e.A36c as ylbx
+			FROM
+				a01_tab1_01 a,
+				a01_tab1_02 b,
+			    a04_tab3 c,
+				a01_tab13 d,
+				a04_tab4 e
+			WHERE	a.id = b.id AND a.id = c.id AND a.id = d.id AND a.id = e.id AND a.id = #{huid};
+	</select>
+	<select id="querysituationbyid_jkzk" parameterType="java.lang.String" resultType="java.util.Map">
+			select a11 as zk,COUNT(1) as total from a01_tab1_02 where id = #{huid} GROUP BY a11;
+	</select>
+	<select id="querya01_tab1_01byid" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT id as huid,aad001 as hzxm,aad002 as sfz,aac004 as lxdh,aaf001 as kfyh,aaf002 as yhzh,
+					CONCAT('宁夏回族自治区',
+					(SELECT areaname from common_area where areaid = a.shiCode),
+					(SELECT areaname from common_area where areaid = a.xianCode),
+					(SELECT areaname from common_area where areaid = a.xiangCode),
+					(SELECT areaname from common_area where areaid = a.cunCode)) as jtzz,
+					a1 as sbbz,
+					a2 as pkhsx,
+					gA19 as sfjls,
+					gA20 as sfdsznh,
+					gA21 as sfsnh,
+		      		a2a as sfymbq,
+					a2b as ymjc,
+					a3 as zyzpyy,
+					a3a as qtzpyy,
+					a3b as fpxq
+			FROM a01_tab1_01 a WHERE a.id = #{huid};
+	</select>
+	<select id="querya01_tab1_02byid" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT
+				id AS huid,
+				a4 AS xm,
+				a5 AS xb,
+				a6 AS sfz,
+				a7 AS yhzgx,
+				a8 AS mz,
+				a9 AS whcd,
+				a10 AS zxsqk,
+				a11 AS jkzk,
+				a12 AS ldnl,
+				a13 AS wgzk,
+				a14 AS wgsj,
+				gA19 AS sfxyjr,
+				a15 AS sfxnh,
+				a16 AS sfylbx,
+				an1 AS sfncdb,
+				an2 AS sfwbgy
+			FROM
+				a01_tab1_02
+			WHERE
+				id = #{huid};
+	</select>
+	<select id="querymeasure_a04_tab4byid" parameterType="java.lang.String" resultType="java.util.Map">
+			select A36a as jhsy,
+				 A36b as dbj,
+				 A36c as ylbx,
+				 A36f as stbcj,
+				 AN7 as scbt,
+				 AN8 as nybxbt,
+				 AN9 as zfbt,
+				 AN10 as zxj,
+				 AN11 as yljhbt,
+				 AN12 as pxjhbt,
+				 AN13 as xnh,
+				 AN14 as dbje,
+				 AN15 as qtbt
+			from a04_tab4 where id =#{huid};
+	</select>
+	<select id="querya06_tab6byid" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT AN29a as lsfcqk1l,
+				   AN29a_1 as lsfcqk1l_sl,
+				   AN29a_2 as lsfcqk1l_je,
+				   AN29b as lsfcqk2,
+				   AN29b_1 as lsfcqk2_sl,
+				   AN29b_2 as lsfcqk2_je,
+				   AN29c as lsfcqk3,
+				   AN29c_1 as lsfcqk3_sl,
+				   AN29c_2 as lsfcqk3_je,
+			       AN29d as lsfcqk4,
+				   AN29d_1 as lsfcqk4_sl,
+				   AN29d_2 as lsfcqk4_je,
+				   AN29e as lsfcqk5,
+				   AN29e_1 as lsfcqk5_sl,
+				   AN29e_2 as lsfcqk5_je,
+				   AN30a as rsfcqk1,
+				   AN30a_1 as rsfcqk1_sl,
+				   AN30a_2 as rsfcqk1_je,
+				   AN30b as rsfcqk2,
+				   AN30b_1 as rsfcqk2_sl,
+				   AN30b_2 as rsfcqk2_je,
+				   AN30c as rsfcqk3,
+				   AN30c_1 as rsfcqk3_sl,
+				   AN30c_2 as rsfcqk3_je,
+			       AN30d as rsfcqk4,
+				   AN30d_1 as rsfcqk4_sl,
+				   AN30d_2 as rsfcqk4_je,
+				   AN30e as rsfcqk5,
+				   AN30e_1 as rsfcqk5_sl,
+				   AN30e_2 as rsfcqk5_je,
+				   AN31 as xjssqs,
+				   AN32 as xjsswp,
+				   AN33 as xjsxyhc,
+				   AN34 as xznjsb,
+				   AN35 as gtjyzl,
+				   AN35a as njysr,
+				   AN36 as lztdmj,
+				   AN36a as lzsr,
+				   AN37 as zcsyfs,
+				   AN37a as zcsyhzdx,
+				   AN37b as zcsysr,
+			       AN38 as zxfpzjtr,
+				   AN39 as hybmzjtr,
+				   AN40 as shbfzjtr			 
+			FROM a06_tab6 WHERE id = #{huid};
+	</select>
+	<select id="querya01_tab2byid" parameterType="java.lang.String" resultType="java.util.Map">
+			SELECT
+					A17 AS gdmj,
+					A24 AS gbds,
+					A17a AS ggmj,
+					A25 AS dljl,
+					A18 AS ldmj,
+					A26 AS dllx,
+					A18a AS tghlmj,
+					A27 AS zfmj,
+					A18b AS lgmj,
+					A28 AS sfwf,
+					A19 AS mcmj,
+					AN4 AS xjzfmj,
+					A20 AS smmj,
+					A29 AS ywcs,
+					A21 AS yskn,
+					A30 AS rllx,
+					A22 AS ysaq,
+					AN5 AS kdjr,
+					AN3 AS ysfs,
+					AN6 AS sjsw,
+					A23 AS sftd,
+					A31 AS nmhzs
+				FROM
+					a01_tab2
+				WHERE
+					id = #{huid};
+	</select>
+	<select id="querya04_tab3byid" parameterType="java.lang.String" resultType="java.util.Map">
+				SELECT
+					A31a1 AS yzxza1,
+					A31a1_1 as yzxzsla1,
+					A31a2 AS yzxza2,
+					A31a2_1 as yzxzs2a1,
+					A31b1 AS yzxzb1,
+					A31b1_1 as yzxzslb1,
+					A31b2 AS yzxzb2,
+					A31b2_1 as yzxzslb2,
+					A31c1 AS yzxzc1,
+					A31c1_1 as yzxzslc1,
+					A31c2 AS yzxzc2,
+					A31c2_1 as yzxzslc2,
+					A31d AS yzmj,
+					A31e AS wpmj,
+					A31d_1 AS sxyhc,
+					A31f AS njjzl,
+					A31f1_1 AS njjsl,
+					A31f1 AS njjzl1,
+					A31f1_1 AS njjsl1,
+					A31f2 AS njjzl2,
+					A31f2_1 AS njjsl2,
+					A31f3 AS njjzl3,
+					A31f3_1 AS njjsl3,
+					A31f4 AS njjzl4,
+					A31f4_1 AS njjsl4,
+					A31g AS gtjy,
+					A31g_1 AS gtjyzl,
+					A31g_2 AS gtjyje
+				FROM
+					a04_tab3
+				WHERE
+					id = #{huid};
+	</select>	
+	<select id="querya04_tab4byid" parameterType="java.lang.String" resultType="java.util.Map">
+				SELECT
+					A34 AS gzsr,
+					AN17 AS sczc,
+					A35 AS scsr,
+					AN18 AS cczc,
+					A36 AS glbt,
+					AN18a AS fz,
+					A36a AS jhsyj,
+					AN19 AS sbzc,
+					A36b AS lqdbj,
+					AN20 AS gjfzc,
+					A36c AS ylbxj,
+					AN21 AS jyzc,
+					A36f AS stbcj,
+					AN22 AS ylfy,
+					AN7 AS scbt,
+					AN22a AS hbzl,
+					AN8 AS nybxbt,
+					AN23 AS qtzc,
+					AN9 AS zfbt,
+					AN23a AS hsjqzc,
+					AN10 AS gjzxj,
+					AN23b AS yzzc,
+					AN11 AS ylbt,
+					AN12 AS jnpxbt,
+					AN13 AS xnhbx,
+					AN14 AS dbjz,
+					AN15 AS qtbt,
+					AN16 AS ccsr,
+					A33 AS rjsr
+				FROM
+					a04_tab4 where id = #{huid};
+	</select>	
+	<select id="querya05_tab5byid" parameterType="java.lang.String" resultType="java.util.Map">
+				SELECT
+					AN24a AS lpkhxq1,
+					AN24a_1 AS lpkhxq1_sl,
+					AN24a_2 AS lpkhxq1_je,
+					AN24b AS lpkhxq2,
+					AN24b_1 AS lpkhxq2_sl,
+					AN24b_2 AS lpkhxq2_je,
+					AN24c AS lpkhxq3,
+					AN24c_1 AS lpkhxq3_sl,
+					AN24c_2 AS lpkhxq3_je,
+					AN25a AS rpkhxq1,
+					AN25a_1 AS rpkhxq1_sl,
+					AN25a_2 AS rpkhxq1_je,
+					AN25b AS rpkhxq2,
+					AN25b_1 AS rpkhxq2_sl,
+					AN25b_2 AS rpkhxq2_je,
+					AN25c AS rpkhxq3,
+					AN25c_1 AS rpkhxq3_sl,
+					AN25c_2 AS rpkhxq3_je,
+					AN26 AS yzssxq,
+					AN26a AS zzssxq,
+					AN26b AS njsbxq,
+					AN27a AS jsxqzl,
+					AN27b AS jsxqfs,
+					AN28 AS gtjyyy,
+					AN28a AS gtjyxq,
+					AN28b AS zjly,
+					AN28c AS zjje
+				FROM
+					a05_tab5
+				WHERE
+					id = #{huid};
+	</select>
+	<select id="querya07_tab7byid" parameterType="java.lang.String" resultType="java.util.Map">
+				SELECT
+					AN41a AS xm,
+					AN41a_1 AS yhzh,
+					AN41a_2 AS jdjg,
+					AN41a_3 jdje,
+					AN41a_4 AS jdyt,
+					AN41a_5 jdqx,
+					AN41a_6 AS yll,
+					AN41a_7 AS jdsj,
+					AN41a_8 AS txje,
+					AN41a_9 yqhkje,
+					AN41a_10 AS jdxydj
+				FROM
+					a07_tab7
+				WHERE
+					id = #{huid};
+	</select>
+	<select id="querya08_tab8byid" parameterType="java.lang.String" resultType="java.util.Map">
+				SELECT
+					AN42a AS pxrxm,
+					AN42a_1 AS pxxq,
+					AN42a_2 AS pxlx,
+					AN42a_3 AS pxjg,
+					AN42a_4 AS pxrq,
+					AN42a_5 AS pxzy,
+					AN42a_6 AS zjly,
+					AN42a_7 AS zjje,
+					AN42a_8 AS sfjy,
+					AN42a_9 AS qzqk,
+					AN42a_10 AS zsbh,
+					AN42a_11 AS wgsj,
+					AN42a_12 AS wgqx,
+					AN42a_13 AS srqk
+				FROM
+					a08_tab8
+				WHERE
+					id = #{huid};
+	</select>	
+	<select id="querya09_tab9byid" parameterType="java.lang.String" resultType="java.util.Map">
+				SELECT
+					AN43a AS bfdw,
+					AN43a_3 AS bfwplb,
+					AN43a_1 AS jybf,
+					AN43a_4 AS bfwpsl,
+					AN43a_2 AS jybfzj,
+					AN43a_5 AS bfwpje
+				FROM
+					a09_tab9
+				WHERE
+					id = #{huid};
+	</select>
+	<select id="querya01_tab10byid" parameterType="java.lang.String" resultType="java.util.Map">
+				SELECT
+					gA44 AS sfbq,
+					AN44 AS bqnd,
+					gA45 AS bqfs,
+					AN46 AS azfs,
+					AN45 AS azd,
+					gA49 AS bqwt,
+					AN47 AS sfwcbq,
+					AN48 AS yzfsfcc,
+					AN48a AS hjqk,
+					AN48b AS ytdqk
+				FROM
+					a01_tab10
+				WHERE
+					id = #{huid};
+	</select>
+	<select id="querya01_tab11byid" parameterType="java.lang.String" resultType="java.util.Map">
+				SELECT
+					AN49 AS qsrjsr,
+					AN49c AS hyfpjj,
+					AN49a AS fcxms,
+					AN49d AS shbfj,
+					AN49b AS zxfpj,
+					AN49e AS fczzze,
+					AN50 AS tprjsr,
+					AN51 AS bhl,
+					AN52 AS psjg,
+					AN53 AS ysr,
+					AN54 AS lxdh
+				FROM
+					a01_tab11
+				WHERE
+					id = #{huid};
+	</select>
+	<select id="querya01_tab12byid" parameterType="java.lang.String" resultType="java.util.Map">
+				SELECT
+					AN55 AS lrr,
+					AN55a AS lrrlsfs,
+					AN56 AS shr,
+					AN56a AS shrlsfs,
+					AN57 AS fzld,
+					AN57a AS fzldlsfs
+				FROM
+					a01_tab12
+				WHERE
+					id = #{huid};
+	</select>
+	<select id="querya01_tab13byid" parameterType="java.lang.String" resultType="java.util.Map">
+				SELECT
+					respon,
+					gxb,
+					gzjh,
+					gzzmm,
+					gbfdwmc,
+					gbfkssj,
+					gbjssj,
+					glsgx,
+					rank,
+					contactphone,
+					gdwdz
+				FROM
+					a01_tab13
+				WHERE
+					id = #{huid};
+	</select>
+</mapper>

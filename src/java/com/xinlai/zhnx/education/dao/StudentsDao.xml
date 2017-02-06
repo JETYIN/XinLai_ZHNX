@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xinlai.zhnx.education.dao.StudentsDao">
+
+	<select id="getEduConstitute" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			SUM(a.PreschoolStuNum) as PreschoolStuNum,
+			SUM(a.PrimarySecondaryStuNum) as PrimarySecondaryStuNum,
+			SUM(a.VocationalEduStuNum)as VocationalEduStuNum
+		FROM
+			edu_studentall a,
+			common_area b
+		WHERE
+			a.AreaCode = b.areaid
+		AND b.parentid = #{areaCode}
+	</select>	
+	
+	<select id="getDataAnaly" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			a.AreaName,
+			a.PreschoolStuNum as PreschoolStuNum,
+			a.PrimarySecondaryStuNum as PrimarySecondaryStuNum,
+			a.VocationalEduStuNum as VocationalEduStuNum
+		FROM
+			edu_studentall a,common_area b 
+		WHERE a.AreaCode = b.areaid
+		AND b.parentid = #{areaCode}
+		ORDER BY a.AreaCode
+	</select>	
+	
+	<select id="getPrimarySecondary_zxsj" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			a.*
+		FROM
+			edu_primarysecondstudentinschl a,
+			common_area b
+		WHERE
+			a.AreaCode = b.areaid
+		AND
+			b.parentid = #{areaCode}
+		ORDER BY
+			a.AreaCode
+	</select>
+	
+	<select id="getPrimarySecondary_zxnn" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			a.*
+		FROM
+			edu_primarysecondstudentratio a,
+			common_area b
+		WHERE
+			a.AreaCode = b.areaid
+		AND
+			b.parentid = #{areaCode}
+		ORDER BY
+			a.AreaCode
+	</select>
+	
+	<select id="getPrimarySecondary_lset" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			a.*
+		FROM
+			edu_primarysecondstudentLBC a,
+			common_area b
+		WHERE
+			a.AreaCode = b.areaid
+		AND
+			b.parentid = #{areaCode}
+		ORDER BY
+			a.AreaCode
+	</select>
+
+	<select id="getPrimarySecondary_djxs" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			a.*
+		FROM
+			edu_primarysecondstudentSES a,
+			common_area b
+		WHERE
+			a.AreaCode = b.areaid
+		AND
+			b.parentid = #{areaCode}
+		ORDER BY
+			a.AreaCode
+	</select>
+	
+	<select id="getPreSchool" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			a.*
+		FROM
+			edu_preschool a,
+			common_area b
+		WHERE
+			a.AreaCode = b.areaid
+		AND
+			b.parentid = #{areaCode}
+		ORDER BY
+			a.AreaCode
+	</select>
+	
+	<select id="getPreSchoolLBC" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			a.*
+		FROM
+			edu_preschoolLBC a,
+			common_area b
+		WHERE
+			a.AreaCode = b.areaid
+		AND
+			b.parentid = #{areaCode}
+		ORDER BY
+			a.AreaCode
+	</select>
+</mapper>

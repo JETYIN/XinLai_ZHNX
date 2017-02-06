@@ -1,0 +1,394 @@
+[
+  {
+    "name": "教育云",
+    "children": [
+      {
+        "name": "学生情况",
+        "url": "module/education/students.html",
+        "urlRight" : "module/education/studentsRight.html",
+        "available": true
+      },
+      {
+        "name": "学校情况",
+        "url": "module/education/schools.html",
+        "urlRight" : "module/education/schoolsRight.html",
+        "available": true
+      },
+      {
+        "name": "教职工情况",
+        "url": "module/education/teachers.html",
+        "urlRight" : "module/education/teachersRight.html",
+        "available": true
+      },
+      {
+        "name": "三通两平台",
+        "url": "module/education/resourcePlatform.html",
+        "urlRight" : "module/education/resourcePlatformRight.html",
+        "available": true
+      }
+    ],
+    "available": true
+  },
+  {
+  	"name": "气象云",
+  	"children": [
+  	{
+  		"name": "天气实况",
+  		"url" : "module/weather/actual.html",
+  		"urlRight" : "module/weather/actualRight.html",
+  		"available" : true
+  	},
+  	{
+  		"name": "天气预报",
+  		"url" : "module/weather/forecast.html",
+  		"urlRight" : "module/weather/forecastRight.html",
+  		"available" : true
+  	},
+  	{
+  		"name": "交通气象",
+  		"url" : "module/weather/traffic.html",
+  		"urlRight" : "module/weather/trafficRight.html",
+  		"available" : true
+  	},
+  	{
+  		"name": "农业气象",
+  		"url" : "module/weather/agriculture.html",
+  		"urlRight" : "module/weather/agricultureRight.html",
+  		"available" : false
+  	}],
+  	"available": true
+  },
+  {
+	"name": "卫生云",
+  	"children": [
+  	{
+  		"name": "区域卫生平台",
+  		"url" : "module/health/regionalPlatform.html",
+  		"urlRight" : "module/health/regionalPlatformRight.html",
+  		"available" : true
+  	},
+  	{
+  		"name": "居民健康卡",
+  		"url" : "module/health/residentHealthCard.html",
+  		"urlRight" : "module/health/residentHealthCardRight.html",
+  		"available" : false
+  	}],
+  	"available": true
+   },
+  {
+    "name": "扶贫云",
+    "children": [
+    {
+        "name": "贫困对象",
+        "url": "module/fupin/person.html",
+        "urlRight" : "module/fupin/personRight.html",
+        "available": true
+    },
+    {
+        "name": "发展需求",
+        "url": "module/fupin/developmentNeed.html",
+        "urlRight" : "module/fupin/developmentNeedRight.html",
+        "available": true
+    },
+    {
+        "name": "扶贫措施",
+        "url": "module/fupin/fpMeasure.html",
+        "urlRight" : "module/fupin/fpMeasureRight.html",
+        "available": true
+    },
+    {
+        "name": "脱贫成效",
+        "url": "module/fupin/fpEffect.html",
+        "urlRight" : "module/fupin/fpEffectRight.html",
+        "available": true
+    },
+    {
+        "name": "十三五脱贫",
+        "url": "module/fupin/fpShiSanWu.html",
+        "urlRight" : "module/fupin/fpShiSanWuRight.html",
+        "available": true
+    }],
+    "available": true
+  },
+  {
+    "name": "水利云",
+    "children": [
+      {
+        "name": "地图",
+        "url": "module/waterCloud/agriculture.html",
+        "urlRight" : "module/waterCloud/agricultureRight.html",
+        "available": true
+      },
+      {
+        "name": "监测点",
+        "url": "module/waterCloud/people.html",
+        "urlRight" : "module/waterCloud/peopleRight.html",
+        "available": true
+      },
+      {
+        "name": "行政区",
+        "url": "module/waterCloud/industry.html",
+        "urlRight" : "module/waterCloud/industryRight.html",
+        "available": true
+      },
+      {
+        "name": "降水监测",
+        "url": "",
+        "urlRight" : "",
+        "available": false
+      },
+      {
+        "name": "水利发电",
+        "url": "",
+        "urlRight" : "",
+        "available": false
+      },
+      {
+        "name": "监控视频",
+        "url": "",
+        "urlRight" : "",
+        "available": false
+      },
+      {
+        "name": "水利工程",
+        "url": "",
+        "urlRight" : "",
+        "available": false
+      },
+      {
+        "name": "水利灌溉",
+        "url": "",
+        "urlRight" : "",
+        "available": false
+      },
+      {
+        "name": "工程审批",
+        "url": "",
+        "urlRight" : "",
+        "available": false
+      }
+    ],
+    "available": true
+  },
+  {
+	"name": "综合集成系统",
+  	"children": [
+  	{
+  		"name": "政务中心",
+  		"url" : "module/integration/ZhengWu.html",
+  		"urlRight" : "module/integration/integrationRight.html",
+  		"available" : true
+  	},
+  	{
+  		"name": "水利厅",
+  		"url" : "module/integration/ShuiLi.html",
+  		"urlRight" : "module/integration/integrationRight.html",
+  		"available" : true
+  	},
+  	{
+  		"name": "党委组织部",
+  		"url" : "module/integration/DangWeiZuZhi.html",
+  		"urlRight" : "module/integration/integrationRight.html",
+  		"available" : true
+  	},
+  	{
+  		"name": "地矿局",
+  		"url" : "module/integration/DikuangJu.html",
+  		"urlRight" : "module/integration/integrationRight.html",
+  		"available" : true
+  	},
+  	{
+  		"name": "信访局",
+  		"url" : "module/integration/XinFangJu.html",
+  		"urlRight" : "module/integration/integrationRight.html",
+  		"available" : true
+  	},
+  	{
+  		"name": "海原县财政局",
+  		"url" : "module/integration/HaiYuanCaiZheng.html",
+  		"urlRight" : "module/integration/integrationRight.html",
+  		"available" : true
+  	},
+  	{
+  		"name": "人大常委会办公厅",
+  		"url" : "module/integration/RenDaChangWei.html",
+  		"urlRight" : "module/integration/integrationRight.html",
+  		"available" : true
+  	},
+  	{
+  		"name": "共青团",
+  		"url" : "module/integration/GongQingTuan.html",
+  		"urlRight" : "module/integration/integrationRight.html",
+  		"available" : true
+  	},
+  	{
+  		"name": "党委老干部局",
+  		"url" : "module/integration/DangWeiLaoGanBu.html",
+  		"urlRight" : "module/integration/integrationRight.html",
+  		"available" : true
+  	},
+  	{
+  		"name": "宗教局",
+  		"url" : "module/integration/ZhongJiaoJu.html",
+  		"urlRight" : "module/integration/integrationRight.html",
+  		"available" : true
+  	},
+  	{
+  		"name": "科技厅",
+  		"url" : "module/integration/KeJiTing.html",
+  		"urlRight" : "module/integration/integrationRight.html",
+  		"available" : true
+  	},
+  	{
+  		"name": "公安厅",
+  		"url" : "module/integration/GongAnTing.html",
+  		"urlRight" : "module/integration/integrationRight.html",
+  		"available" : true
+  	},
+  	{
+  		"name": "司法厅",
+  		"url" : "module/integration/SiFaTing.html",
+  		"urlRight" : "module/integration/integrationRight.html",
+  		"available" : true
+  	},
+  	{
+  		"name": "公共资源交易管理局",
+  		"url" : "module/integration/GongGongZiYuan.html",
+  		"urlRight" : "module/integration/integrationRight.html",
+  		"available" : true
+  	},
+  	{
+  		"name": "政府研究室",
+  		"url" : "module/integration/ZhengFuYanJu.html",
+  		"urlRight" : "module/integration/integrationRight.html",
+  		"available" : true
+  	},
+  	{
+  		"name": "中卫市工信局",
+  		"url" : "module/integration/ZhongWeiGongXing.html",
+  		"urlRight" : "module/integration/integrationRight.html",
+  		"available" : true
+  	},
+  	{
+  		"name": "宁夏日报社新传媒",
+  		"url" : "module/integration/NingXiaRiBao.html",
+  		"urlRight" : "module/integration/integrationRight.html",
+  		"available" : true
+  	},
+  	{
+  		"name": "国土资源厅",
+  		"url" : "module/integration/GuoTuZiYuan.html",
+  		"urlRight" : "module/integration/integrationRight.html",
+  		"available" : true
+  	},
+  	{
+  		"name": "人社厅",
+  		"url" : "module/integration/NingXiaRenShe.html",
+  		"urlRight" : "module/integration/integrationRight.html",
+  		"available" : true
+  	},
+  	{
+  		"name": "发改委",
+  		"url" : "module/integration/NingXiaFaGaiWei.html",
+  		"urlRight" : "module/integration/integrationRight.html",
+  		"available" : true
+  	},
+  	{
+  		"name": "卫计生委",
+  		"url" : "module/integration/WeiJiShengWei.html",
+  		"urlRight" : "module/integration/integrationRight.html",
+  		"available" : true
+  	},
+  	{
+  		"name": "惠农区政府",
+  		"url" : "module/integration/HuiNong.html",
+  		"urlRight" : "module/integration/integrationRight.html",
+  		"available" : true
+  	},
+  	{
+  		"name": "信建办",
+  		"url" : "module/integration/NingXiaXinJianBan.html",
+  		"urlRight" : "module/integration/integrationRight.html",
+  		"available" : true
+  	},
+  	{
+  		"name": "人民防空办公室",
+  		"url" : "module/integration/RenMinFangKong.html",
+  		"urlRight" : "module/integration/integrationRight.html",
+  		"available" : true
+  	},
+  	{
+  		"name": "旅游局",
+  		"url" : "module/integration/LvYouJu.html",
+  		"urlRight" : "module/integration/integrationRight.html",
+  		"available" : true
+  	},
+  	{
+  		"name": "教育信息化管理中心",
+  		"url" : "module/integration/JiaoYuZiYuan.html",
+  		"urlRight" : "module/integration/integrationRight.html",
+  		"available" : true
+  	},
+  	{
+  		"name": "工商行政管理局",
+  		"url" : "module/integration/GongShangXingZheng.html",
+  		"urlRight" : "module/integration/integrationRight.html",
+  		"available" : true
+  	},
+  	{
+  		"name": "政法委",
+  		"url" : "module/integration/ZhengFaWei.html",
+  		"urlRight" : "module/integration/integrationRight.html",
+  		"available" : true
+  	},
+  	{
+  		"name": "农业物联网研究中心",
+  		"url" : "module/integration/NongYeWuLianWang.html",
+  		"urlRight" : "module/integration/integrationRight.html",
+  		"available" : true
+  	},
+  	{
+  		"name": "财政厅",
+  		"url" : "module/integration/CaiZhengTing.html",
+  		"urlRight" : "module/integration/integrationRight.html",
+  		"available" : true
+  	},
+  	{
+  		"name": "政府办公厅",
+  		"url" : "module/integration/ZhengFuBanGongTing.html",
+  		"urlRight" : "module/integration/integrationRight.html",
+  		"available" : true
+  	}],
+  	"available": true
+   },
+  {
+    "name": "政务云",
+    "children": [
+    ],
+    "available": false
+  },
+  {
+    "name": "商务云",
+    "children": [
+    ],
+    "available": false
+  },
+  {
+    "name": "旅游云",
+    "children": [
+    ],
+    "available": false
+  },
+  {
+    "name": "环境云",
+    "children": [
+    ],
+    "available": false
+  },
+  {
+    "name": "应急指挥",
+    "children": [
+    ],
+    "available": false
+  }
+]

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="flow_frame" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 212 228" style="enable-background:new 0 0 212 228;" xml:space="preserve">
+<style type="text/css">
+	.flow_frame_st0{fill:none;stroke:#00BEFF;stroke-miterlimit:10;}
+	.flow_frame_st1{fill:#1561C0;fill-opacity:0.8;stroke:#00BEFF;stroke-miterlimit:10;}
+	.flow_frame_st2{fill:#00FFD4;cursor:pointer;}
+	.flow_frame_st3{fill:#00BEFF;fill-opacity:0.8;}
+</style>
+<g id="XMLID_39_">
+	<g>
+		<polygon id="XMLID_944_" class="flow_frame_st0" points="211.4,227.4 35.5,227.4 0.6,191.5 0.6,23.8 20.7,0.6 211.4,0.6 		"/>
+		<polygon id="XMLID_942_" class="flow_frame_st1" points="21.4,212.9 0.6,191.9 0.6,24.2 20.7,0.9 211.4,0.9 211.4,8.7 21.4,8.7 		"/>
+	</g>
+	<g id="MAP_XMLID_44_BTN" style="cursor:pointer;">
+		<polygon id="XMLID_44_" class="flow_frame_st2" points="7.5,119.4 5.4,117.3 14.5,108.2 6.8,97.6 9.2,95.8 18.4,108.5"/>
+		<polygon id="XMLID_44_1" style="fill:rgba(0,0,0,0)" points="6.8,95.8 18.4,95.8 18.4,119.4 6.8,119.4"/>
+	</g>
+	<polygon id="XMLID_43_" class="flow_frame_st1" points="21.4,207.1 36.8,223.9 211.4,223.9 211.4,227.4 35.5,227.4 21.4,212.9"/>
+	<polygon id="XMLID_42_" class="flow_frame_st3" points="23.4,19.3 23.4,10.5 32,10.5"/>
+	<polygon id="XMLID_41_" class="flow_frame_st3" points="200.4,10.5 209.1,10.5 209.1,19.1"/>
+	<polygon id="XMLID_40_" class="flow_frame_st3" points="200.4,221.6 209.1,221.6 209.1,213"/>
+</g>
+</svg>

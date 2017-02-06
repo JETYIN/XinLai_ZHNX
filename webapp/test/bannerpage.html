@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+*{margin:0;
+ padding:0;
+ list-style:none;}
+ .div_banner{height:200px;
+  width:260px;
+  margin:60px auto;
+  overflow: hidden;
+  position: relative;
+  margin:100px auto;}
+ .div_banner ul{position:absolute;} 
+ .div_banner ul li{height:170px;}
+ .div_banner ol{position:absolute;
+   right:5px;
+   bottom:10px;}
+ .div_banner ol li{height:20px; width: 20px;
+    background:#ccc;
+    border:solid 1px #666;
+    margin-left:5px;
+    color:#000;
+    float:left;
+    line-height:center;
+    text-align:center;
+    cursor:pointer;}
+ .div_banner ol .on{background:#E97305;
+    color:#fff;}
+</style>
+
+</head>
+<script type="text/javascript" src="js/banner.js"></script>
+<body>
+
+<div class="div_banner" id=banner>
+
+<!-- 定义图片资源 -->
+<ul id="pictrue">
+<!-- 不指定图片路径和图片跳转 -->
+<li class="number"><a target="_blank" href="#"><img id="0"/></a></li>
+<li><a target="_blank" href="#"><img id="1"/></a></li>
+<li><a target="_blank" href="#"><img id="2"/></a></li>
+<li><a target="_blank" href="#"><img id="3"/></a></li>
+<li><a target="_blank" href="#"><img id="4"/></a></li>
+
+<!-- 指定图片固定路径 
+<li><img src="img/1.jpg" alt=""></li>
+<li><img src="img/2.jpg" alt=""></li>
+<li><img src="img/3.jpg" alt=""></li>
+<li><img src="img/4.jpg" alt=""></li>
+<li><img src="img/5.jpg" alt=""></li>
+</ul> -->
+
+<!--也可不写死在页面 
+<a target="_blank" href="#"> <img id="one" /></a>
+<a target="_blank" href="#"> <img id="two" /></a>
+<a target="_blank" href="#"> <img id="three" /></a>
+
+ -->
+<!--定义图片索引  -->
+<ol id="list">
+<li class="on">1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+</ol>
+
+
+</div>
+</body>
+</html>

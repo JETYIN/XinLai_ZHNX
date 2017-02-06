@@ -1,0 +1,58 @@
+ul,li,ol{ margin:0; padding:0; list-style:none;}
+a{ text-decoration:none; border:none; color:#103994; outline:none; transition:color ease-in-out 0.2s;}
+a:hover{ color:#000;}
+img{ margin:0; padding:0; border:none; }
+p{ margin:0; padding:0;}
+
+@font-face {font-family: 'iconfont';
+    src: url('../fonts/iconfont.eot'); /* IE9*/
+    src: url('../fonts/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/iconfont.ttf') format('truetype'); /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+}
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:17px;font-style:normal; margin-right:8px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/***左边栏****/
+.SideBar{ height:1005px; background:rgba(0,0,0,0.3); width:350px; float:left; overflow:hidden;border:solid 0.5px rgba(0,0,0,0.2);}
+
+.hashTabber-nav{ height:1005px; width:350px;overflow-x: hidden;overflow-y: auto;}
+.hashTabber-nav li a{ color:#FFF; height:41px; line-height:41px; width:100%; display:block; text-indent:52px; font-weight:bold; font-size:15px;}
+.hashTabber-nav li a:hover{ color:#ffff00;}
+.hashTabber-nav li.active a{ background:rgba(17,42,106,0.4); color:#ffff00;}
+
+/**右边内容***/
+
+.hashTabber-data{ margin-left:30px;height:1605px;}
+.hashTabber-data .Content {display:none; height:1015px}
+.hashTabber-data .Content.active {display:block; height:1015px}
+
+.hashTabber-data h2{ font-size:30px; color:#FFF; background:url(../images/h2_bg.png) no-repeat left center; padding:26px 0 26px 30px; margin:0;}
+.tongji{ background:url(../images/tongji.png) no-repeat; padding:20px 0 20px 30px;}
+.tongji li{ display:inline-block; margin-right:65px; font-weight:bold;}
+.tongji li b{ color:#fff; width:22px; border:1px solid #fff; height:22px; background:#103994; display:inline-block; border-radius:15px; text-align:center; font-weight:normal; line-height:22px; margin-left:4px;}
+
+.tongji li:nth-child(2) b{ background:#F60;}
+.tongji li:nth-child(3) b{ background:#0C6;}
+.tongji li:nth-child(4) b{ background:#CC0;}
+
+.Ul_List{ margin-top:40px; height: 1451px; overflow-x:hidden;}
+.Ul_List li{ width:230px; height:140px; background:rgba(255,255,255,0.8); padding:30px; float:left; margin:0 25px 25px 0;}
+.Ul_List li a{ border-bottom:1px solid #ddd; height:45px; display:block; margin-bottom:15px; font-size:15px; font-weight:bold;}
+.Ul_List li:hover{ background:rgba(255,255,255,0.9);}
+.Ul_List li p{ font-size:13px; color:#555; margin-top:6px;}
+
+.Ul_List li.neibu{ background:rgba(255,255,255,0.8) url(../images/neibu.png) no-repeat top right; background-size:44px;}
+
+.Ul_List li.bushu{ background:rgba(255,255,255,0.8) url(../images/bushu.png) no-repeat top right; background-size:44px;}
+.Ul_List li.bushu a{ color:#333; cursor:default;}
+.Ul_List li.bushu a:hover{ text-indent:0;}
+
+iframe{
+	width: 2000px; height: 1080px; top: -45px; left: 440px; position: absolute; border: 0px;
+	background-color: #FFF;
+}

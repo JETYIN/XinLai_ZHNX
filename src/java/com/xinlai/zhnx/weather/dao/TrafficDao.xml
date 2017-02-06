@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xinlai.zhnx.weather.dao.TrafficDao">
+
+	<select id="getHighwayForecast" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			RegionCode AS siteID,
+			RegionName AS site,
+			RoadName AS road,
+			Weather AS weather,
+			HighestTemp AS hightemp,
+			LowestTemp AS lowtemp,
+			TraficLiveWeatherConditions AS cond,
+			VisibilityIndex AS visibility,
+			WetIndexOfPavement AS wet,
+			CrosswindStability AS crosswind,
+			TyreBurstIndex AS tyreburst,
+			DrivingTips AS driving
+		FROM
+			weather_region AS a
+		WHERE
+			DateTime = (
+				SELECT
+					max(DateTime)
+				FROM
+					weather_region
+				WHERE
+					a.RegionCode = RegionCode
+			)
+		AND RoadType = #{roadtype}
+		ORDER BY
+			a.RegionCode ASC
+	</select>
+	
+	<select id="getTrifficStation" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			a.*
+		FROM
+			weather_station AS a
+		WHERE
+			DateTime = (
+				SELECT
+					max(DateTime)
+				FROM
+					weather_station
+				WHERE
+					a.StationCode = StationCode
+			)
+		ORDER BY a.StationCode ASC
+	</select>
+	
+	<select id="getRoadOrStationForecast" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			RoadSurfaceTemp,
+			RoadSurfaceTemp as RoadbedTemp,
+			VisibilityIndex,
+			Precipitation,
+			WindSpeed
+		FROM
+			weather_region
+		WHERE
+			RegionCode =#{siteID}
+		UNION 
+		SELECT
+			RoadSurfaceTemp,
+			RoadbedTemp,
+			VisibilityIndex,
+			Precipitation,
+			WindSpeed
+		FROM
+			weather_station
+		WHERE
+			StationCode =#{stationID}
+	</select>
+</mapper>

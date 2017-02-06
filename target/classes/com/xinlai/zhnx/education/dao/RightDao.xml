@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xinlai.zhnx.education.dao.RightDao">
+
+	<select id="getStudent" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			SUM(a.PreschoolStuNum) as PreschoolStuNum,
+			SUM(PrimarySecondaryStuNum) as PrimarySecondaryStuNum,
+			SUM(VocationalEduStuNum) as VocationalEduStuNum
+		FROM
+			edu_studentall a,
+			common_area b
+		WHERE
+			a.AreaCode = b.areaid
+		AND
+			b.parentid = '640000000000'
+	</select>
+	
+	<select id="getSchool" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			SUM(a.PreschoolNum) as PreschoolNum,
+			SUM(a.PrimarySecondarySchoolNum) as PrimarySecondarySchoolNum,
+			SUM(a.VocationalEduSchoolNum) as VocationalEduSchoolNum
+		FROM
+			edu_schoolall a,
+			common_area b
+		WHERE
+			a.AreaCode = b.areaid
+		AND
+			b.parentid = '640000000000'
+	</select>
+	
+	<select id="getTeacher" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			a.Type,
+			SUM(a.NumOfType) as NumOfType
+		FROM
+			edu_teacher a,
+			common_area b
+		WHERE
+			a.AreaCode = b.areaid
+		AND
+			b.parentid = '640000000000'
+		AND
+			a.ClassType = '教育阶段'
+		GROUP BY
+			a.Type
+	</select>
+</mapper>

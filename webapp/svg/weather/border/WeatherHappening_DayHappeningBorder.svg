@@ -1,0 +1,32 @@
+<?xml version="1.0" ?><!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --><svg id="图层_1" style="enable-background:new 0 0 905 165;" version="1.1" viewBox="0 0 905 165" x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" y="0px" zn="天气实况-当日实况外框">
+<style type="text/css">
+	.WeatherHappening_DayHappeningBorder_st0{fill:#1561C0;}
+	.WeatherHappening_DayHappeningBorder_st1{opacity:0.59;fill:#1561C0;}
+	.WeatherHappening_DayHappeningBorder_st2{fill:#00BEFF;}
+</style>
+<g>
+	<g>
+		<polygon class="WeatherHappening_DayHappeningBorder_st0" id="XMLID_129_" points="68.4,152.9 63.5,156.4 76.3,156.4 81.2,152.9   "/>
+		<polygon class="WeatherHappening_DayHappeningBorder_st0" id="XMLID_128_" points="47.6,152.9 42.6,156.4 55.4,156.4 60.4,152.9   "/>
+		<polygon class="WeatherHappening_DayHappeningBorder_st0" id="XMLID_127_" points="110.2,152.9 105.3,156.4 118.1,156.4 123,152.9   "/>
+		<polygon class="WeatherHappening_DayHappeningBorder_st0" id="XMLID_126_" points="89.3,152.9 84.4,156.4 97.2,156.4 102.1,152.9   "/>
+	</g>
+	<g>
+		<polygon class="WeatherHappening_DayHappeningBorder_st1" id="XMLID_125_" points="849.8,7 892.3,7 897.3,3.4 854.8,3.4   "/>
+		<polygon class="WeatherHappening_DayHappeningBorder_st1" id="XMLID_124_" points="824.3,6.3 865.2,6.3 868.1,4.2 827.2,4.2   "/>
+		<polygon class="WeatherHappening_DayHappeningBorder_st1" id="XMLID_123_" points="81.5,5.8 843.5,5.8 845,4.7 82.9,4.7   "/>
+		<g>
+			<polygon class="WeatherHappening_DayHappeningBorder_st1" id="XMLID_122_" points="881.3,1.7 871.3,8.9 871.3,9 54.7,9 52.6,10.5 903.1,10.5 903.1,9 903.1,1.7    "/>
+			<g>
+				<path class="WeatherHappening_DayHappeningBorder_st0" d="M903.1,12H18.4L1.8,24v134.9v3.8h38l-0.3,0.2h12.8l0.3-0.2h8.1l-0.3,0.2h12.8l0.3-0.2h8.1l-0.3,0.2h12.8      l0.3-0.2h8.1l-0.3,0.2h12.8l0.3-0.2h757.6l5.7-3.8h-0.2l24.2-20.1L903.1,12z M901.9,137.9L880,156.4H6.8V22.4L18.4,14h883.6      V137.9z"/>
+				<g>
+					<polygon class="WeatherHappening_DayHappeningBorder_st2" id="XMLID_119_" points="850.2,155.8 850.2,163.3 877.8,163.3 904.1,140.7 904.1,119 901,119 901,137.3        880.1,155.8      "/>
+				</g>
+			</g>
+			<g>
+				<polygon class="WeatherHappening_DayHappeningBorder_st2" id="XMLID_118_" points="7.3,49.7 0.9,49.7 0.9,24.1 17.8,11.4 41.8,11.4 41.8,14.4 18.8,14.4 7.3,23.1           "/>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>
